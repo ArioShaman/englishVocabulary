@@ -1,0 +1,17 @@
+<div class="picker">
+  <div class="color-picker"
+    (click)="changeState()"
+    [style.background-color]="selectedColor"
+  >
+  </div>                  
+  <div class="colors-line"
+    [@colorsState]="colorsState"
+  >
+    <div *ngFor="let color of colors">
+      <div class="color"
+        (click)="selectColor(color)"
+        [style.background-color]=color
+      ></div>
+    </div>
+  </div>
+</div>

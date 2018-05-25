@@ -1,0 +1,88 @@
+<div class="title">Add word data</div>
+
+<div class="container">
+   <form (ngSubmit)="onSubmit()">
+      <div class="groups">
+        <div class="names">
+          <div class="tit">Variables</div>
+          <div class="var">Word:</div>
+          <div class="var">Example sentence:</div>
+          <div class="var">Color:</div>
+        </div>
+        <div class="eng">
+            <div class="tit">English</div>
+
+              <input type="text" class="" required
+                    [(ngModel)]="card.eng" name="eng">
+
+              <input type="text" class="" required
+                    [(ngModel)]="card.engSentence" name="engSentence">  
+
+                
+              <div class="picker">
+                <div class="color-picker"
+                  (click)="changeState()"
+                  [style.background-color]="selectedColor"                  
+                >
+                </div>                  
+                <div class="colors-line"
+                  [@colorState]="colorState"
+                >
+                  <div *ngFor="let color of colors">
+                    <div class="color"
+                      (click)="selectColor(color)"
+                      [style.background-color]=color
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+
+            <div>
+        </div>
+        
+        </div>
+        
+        <div class="rus">
+          <div class="tit">Russian</div>
+
+
+          <input type="text" class="" required
+              [(ngModel)]="card.rus" name="rus">  
+          <input type="text" class="" required
+              [(ngModel)]="card.rusSentence" name="rusSentence">                        
+        </div>                
+      </div>
+      <input class="submit" type="submit" value="Add card" />
+    </form>
+
+    <div class="preview"
+      (click)="changeCardState()"
+      [@cardState]="cardState"
+      [style.background-color]="card.colorHash || selectedColor"        
+    >
+        <div class="eng word card-content"
+          [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
+        >
+          {{card.eng}}
+        </div>
+        
+        <div class="rus word card-content"
+          [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
+        >
+          {{card.rus}}
+        </div>
+
+        <div class="sentence eng-sentence card-content"
+          [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
+        >
+          {{card.engSentence}}
+          </div>
+
+        <div class="sentence rus-sentence card-content"
+          [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
+        >
+          {{card.rusSentence}}
+        </div>  
+    </div>
+</div>

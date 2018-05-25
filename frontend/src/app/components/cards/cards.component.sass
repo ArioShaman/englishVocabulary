@@ -1,0 +1,96 @@
+$grey: #DFDEDD
+
+.title
+  font-size: 30px
+  margin: 20px auto
+  width: 1030px
+  font-family: 'arial'
+  text-align: left
+
+.cards
+  height: auto
+  width: 1070px
+  margin: 0px auto
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  .selected, .not-selected
+    // .card-content
+    //   visibility: visible
+    //   animation: hiding 1s
+    // @keyframes hiding
+    //   0%,90%
+    //     visibility: hidden
+    //   100%
+    //     visibility: visible
+    // transform: scale(1.1, 1.1)
+
+
+  .update, .delete
+    height: 20px
+    width: 20px
+    border-radius: 50%
+    border: 1px solid white
+    position: absolute
+    transition: 0.3s
+    top: 10px
+    &:hover
+      transform: scale(1.1, 1.1)
+  .update
+    left: 10px
+    background-size: 60%
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url('/assets/images/pencil.svg')    
+  .delete
+    right: 10px
+    background-size: 60%
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url('/assets/images/close.svg')
+  .link
+    background-color: #C4C4C4
+    .plus
+      margin: 70px auto
+      height: 60px
+      width: 60px
+      background-size: cover
+      background-image: url('/assets/images/plus.png')
+  .card
+    background-color: $grey
+    transform-style: preserve-3d
+    transitin: 0.5s
+    position: relative
+    height: 200px
+    width: 330px
+    display: inline-block
+    cursor: pointer
+    margin-top: 10px
+    margin-left: 20px
+    .clicked
+      position: absolute
+      height 230px
+      margin-top: 50px
+      background-color: grey !important
+      width: 100%
+      .eng, .word
+        position: absolute
+        margin-left: 40px
+        //top: 50px
+        width: 250px
+        font-family: 'stolzl-med'
+        text-transform: uppercase
+        color: white
+        text-align: center
+        font-size: 25px
+      .rus, .rus-sentence
+        transform: rotateY(180deg)
+
+      .sentence,
+        position: absolute
+        margin-left: 40px
+        width: 250px
+        color: white
+        font-family: 'stolzl-reg'
+        text-align: center
+        top: 80px

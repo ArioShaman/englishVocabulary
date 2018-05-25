@@ -1,0 +1,123 @@
+$grey: #DFDEDD
+
+.title
+  font-size: 30px
+  margin: 20px auto
+  width: 1030px
+  font-family: 'arial'
+  text-align: left
+
+.container
+  height: auto
+  width: 1030px
+  margin: 0px auto
+  .preview
+    background-color: $grey
+    transform-style: preserve-3d
+    transitin: 0.5s
+    position: relative
+    height: 200px
+    width: 330px
+    display: inline-block
+    cursor: pointer
+    margin-top: 10px
+    margin-left: 20px
+    .eng, .word
+      position: absolute
+      margin-left: 40px
+      top: 20px
+      width: 250px
+      font-family: 'stolzl-med'
+      text-transform: uppercase
+      color: white
+      text-align: center
+      font-size: 25px
+    .rus, .rus-sentence
+      transform: rotateY(180deg)
+    .sentence,
+      position: absolute
+      margin-left: 40px
+      width: 250px
+      color: white
+      font-family: 'stolzl-reg'
+      text-align: center
+      top: 130px
+
+  .groups
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    .tit
+      font-size: 20px
+      font-family: 'stolzl-med'
+    .names
+      font-size: 16px
+      width: 20%
+      height: 300px
+      .var
+        height: 40px
+        margin-top: 40px
+        font-family: 'stolzl-light'
+    .eng, .rus
+      position: relative
+      height: 300px
+      width: 40%
+      input 
+        border-radius: 5px
+        padding-left: 15px
+        font-family: 'stolzl-light'
+        border: none
+        background-color: #DFDEDD
+        width: 80%
+        height: 40px
+        margin-top: 40px
+      .picker
+        margin-top: 30px
+        display: flex
+        flex-direction: row
+        width: auto
+        .colors-line
+          clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)
+          margin-left: 50px
+          position: relative
+          height: 40px
+          // width: 0px
+          // background-color: grey
+          display: flex
+          .color
+            border-box: box-sizing
+            position: relative
+            cursor: pointer
+            height: 30px
+            width: 30px            
+            border-radius: 50%
+            border: 2px solid grey
+            margin-left: 15px
+        .color-picker
+          border-box: box-sizing
+          position: absolute
+          cursor: pointer
+          height: 30px
+          width: 30px
+          background-color: white
+          border-radius: 50%
+          border: 2px solid grey
+          &:hover
+            animation: bounce 0.5s
+          @keyframes bounce
+            0%
+              transform: translateY(0px)
+            50%
+              transform: translateY(-10px)
+            100%
+              transform: translateY(0px)
+
+
+.submit
+  float: right
+  margin-right: 7%
+  cursor: pointer
+  height: 40px
+  width: 150px
+  font-family: 'stolzl-reg'
+  border: none  
