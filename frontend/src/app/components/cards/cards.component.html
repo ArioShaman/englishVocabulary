@@ -1,56 +1,84 @@
-<div class="title">You can choose word</div>
+<div class="content-container">
+  <div class="cards-body">
+    <div class="title">You can choose word</div>
+
+    <div class="cards"> 
+
+      <a routerLink="/cards/add" class="card link">
+        <div class="plus"></div>
+      </a>
+
+      <div *ngFor="let card of cards | myFilter:filters">
+        <div class="card"  
+          [class.selected]="card === selectedCard"
+          [style.background-color]="card['colorHash']">
 
 
-<div class="cards"> 
+          <div class="clicked">
+            <div class="content">
+              <div class="angle-bar top left">
 
-  <a routerLink="/cards/add" class="card link">
-    <div class="plus"></div>
-  </a>
+                <a [routerLink]="['/cards/add', card['id']]" class="update">
+                </a>     
+              </div>
 
-  <div *ngFor="let card of cards">
-    <div class="card"  
-      [class.selected]="card === selectedCard"
-      [@cardState]="card.state"
-      [style.background-color]="card['colorHash']">
+              <div class="angle-bar top right">
+                <div class="delete"
+                  (click)="delete(card['id'])"
+                ></div> 
+              </div>
+              <div class="angle-bar bottom right">
+                <div class="kind" (click)="onFilter(card['kind'])">
+                  {{card['kind']}}
+                </div> 
+              </div>
 
-      <div *ngIf='card'>
-        <app-color-picker [childData]="card" ></app-color-picker>
-      </div>
+              <div class="angle-bar bottom left">
+                <div *ngIf='card'>
+                  <app-color-picker [childData]="card" ></app-color-picker>
+                </div>    
+              </div>          
 
-      <a [routerLink]="['/cards/add', card['id']]" class="update">
-      </a>      
+              <dir class="info-bar" (click)="onSelect(card)" [@cardState]="card.state">
+                <div class="eng word card-content"
+                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                >
+                  {{card['eng']}}
+                </div>
+                <div class="rus word card-content"
+                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                >
+                  {{card['rus']}}
+                </div>
+                <div class="sentence eng-sentence card-content"
+                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                >
+                  {{card['engSentence']}}
+                  </div>
 
-      <div class="delete"
-        (click)="delete(card['id'])"
-      ></div>
-
-      <div class="clicked"  (click)="onSelect(card)">
-        <div class="eng word card-content"
-          [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
-        >
-          {{card['eng']}}
-        </div>
-        
-        <div class="rus word card-content"
-          [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
-        >
-          {{card['rus']}}
-        </div>
-
-        <div class="sentence eng-sentence card-content"
-          [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
-        >
-          {{card['engSentence']}}
+                <div class="sentence rus-sentence card-content"
+                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                >
+                  {{card['rusSentence']}}
+                </div>
+                
+              </dir>
+            </div>
           </div>
 
-        <div class="sentence rus-sentence card-content"
-          [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
-        >
-          {{card['rusSentence']}}
         </div>
+
       </div>
-
     </div>
+    
+  </div>
+  <div class="sidebar" [@navState]="navState">
+    <div class="buttons">
+      <div class="button clickable" (click)="resetFilter()">reset filter</div>
+      <div class="button clickable" (click)="shuffle()">reshufle cards</div>
 
+      <!-- Selecter -->
+      <app-selecter [filters]="filters" ></app-selecter>
+    </div>
   </div>
 </div>

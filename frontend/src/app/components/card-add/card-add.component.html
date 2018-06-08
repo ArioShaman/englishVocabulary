@@ -37,7 +37,6 @@
                 </div>
               </div>
 
-
             <div>
         </div>
         
@@ -50,39 +49,52 @@
           <input type="text" class="" required
               [(ngModel)]="card.rus" name="rus">  
           <input type="text" class="" required
-              [(ngModel)]="card.rusSentence" name="rusSentence">                        
+              [(ngModel)]="card.rusSentence" name="rusSentence">
+
+          <div class="selecter">
+            <div class="var">Kind:</div>
+            <app-selecter [filters]="filters"></app-selecter>
+          </div>
         </div>                
       </div>
       <input class="submit" type="submit" value="Add card" />
     </form>
 
-    <div class="preview"
-      (click)="changeCardState()"
-      [@cardState]="cardState"
-      [style.background-color]="card.colorHash || selectedColor"        
-    >
-        <div class="eng word card-content"
-          [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
-        >
-          {{card.eng}}
-        </div>
-        
-        <div class="rus word card-content"
-          [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
-        >
-          {{card.rus}}
-        </div>
+    <div class="preview">
+          <div class="clicked" [style.background-color]="card.colorHash || selectedColor" >
+            <div class="content">
+              
+              <div class="angle-bar bottom right">
+                <div class="kind">
+                  {{filters['kind']}}
+                </div> 
+              </div>
 
-        <div class="sentence eng-sentence card-content"
-          [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
-        >
-          {{card.engSentence}}
-          </div>
+              <dir class="info-bar" (click)="changeCardState()" [@cardState]="cardState">
+                <div class="eng word card-content"
+                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                >
+                  {{card['eng']}}
+                </div>
+                <div class="rus word card-content"
+                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                >
+                  {{card['rus']}}
+                </div>
+                <div class="sentence eng-sentence card-content"
+                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                >
+                  {{card['engSentence']}}
+                  </div>
 
-        <div class="sentence rus-sentence card-content"
-          [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
-        >
-          {{card.rusSentence}}
-        </div>  
+                <div class="sentence rus-sentence card-content"
+                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                >
+                  {{card['rusSentence']}}
+                </div>
+                
+              </dir>
+            </div>
+          </div>      
     </div>
 </div>

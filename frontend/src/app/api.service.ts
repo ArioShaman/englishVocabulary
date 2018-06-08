@@ -10,7 +10,7 @@ export class ApiService {
   constructor(public http: HttpClient) { }
 
   public get(path) {
-      var endpoint = this.API_URL + path;
+      var endpoint = this.API_URL + path + '.json';
       return this.http.get(endpoint);
   }
  

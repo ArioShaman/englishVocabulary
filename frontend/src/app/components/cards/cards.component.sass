@@ -1,29 +1,100 @@
 $grey: #DFDEDD
-
-.title
-  font-size: 30px
-  margin: 20px auto
-  width: 1030px
-  font-family: 'arial'
-  text-align: left
-
-.cards
-  height: auto
-  width: 1070px
-  margin: 0px auto
+$darkred:  #973130
+.content-container
+  height: 100%
+  width: 100%
   display: flex
   flex-direction: row
-  flex-wrap: wrap
-  .selected, .not-selected
-    // .card-content
-    //   visibility: visible
-    //   animation: hiding 1s
-    // @keyframes hiding
-    //   0%,90%
-    //     visibility: hidden
-    //   100%
-    //     visibility: visible
-    // transform: scale(1.1, 1.1)
+  flex-wrap: no-wrap
+  .sidebar
+    height: 100%
+    min-width: 200px
+    max-width: 200px
+    width: 200px
+    background-color: #E8E8E8
+    .buttons
+      height: auto
+      width: 150px
+      margin-left: 25px
+      margin-top: 30px
+      $butt-h: 25px
+      .button
+        height: $butt-h
+        width: 100%
+        margin-top: 25px
+        text-align: center
+        color: #973130
+        font-size: 14px
+        font-family: 'stolzl-reg'
+        padding-top: 7px
+        transition: 0.9s
+        cursor: pointer
+        background-color: white
+      .clickable
+        &:hover
+          background-color: #973130
+          color: white
+      .selecter
+        &:hover
+          .list
+            display: block !important
+        .selected 
+          color:  $darkred !important
+        .select
+          height: $butt-h
+          width: 100%
+          color: #B5B5B5
+        .list
+          // padding-top: 50px
+          display: none
+          position: absolute
+          height: auto
+          overflow-y: auto
+          max-height: 140px
+          width: 150px
+          background-color: white
+          &::-webkit-scrollbar
+            width: 0px
+          .list-el
+            padding-top: 7px
+            height: 25px
+            width: 100%
+            transition: 0.8s
+            &:hover
+              background-color: #B5B5B5
+
+  .cards-body
+    height: 100%
+    width: 100%
+    // background-color: grey
+    .title
+      font-size: 30px
+      // margin: 20px auto
+      width: 98%
+      font-family: 'arial'
+      // text-align: left
+      margin: 0px auto
+      padding-left: 30px
+      margin-top: 20px
+    .cards
+      height: auto
+      width: 98%
+      margin: 0px auto
+      // margin-left: 30px
+      margin-top: 10px
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      .selected, .not-selected
+        // .card-content
+        //   visibility: visible
+        //   animation: hiding 1s
+        // @keyframes hiding
+        //   0%,90%
+        //     visibility: hidden
+        //   100%
+        //     visibility: visible
+        // transform: scale(1.1, 1.1)
 
 
   .update, .delete
@@ -33,7 +104,6 @@ $grey: #DFDEDD
     border: 1px solid white
     position: absolute
     transition: 0.3s
-    top: 10px
     &:hover
       transform: scale(1.1, 1.1)
   .update
@@ -57,40 +127,71 @@ $grey: #DFDEDD
       background-size: cover
       background-image: url('/assets/images/plus.png')
   .card
+    $card-h: 180px
     background-color: $grey
     transform-style: preserve-3d
     transitin: 0.5s
     position: relative
-    height: 200px
+    height: $card-h
     width: 330px
     display: inline-block
     cursor: pointer
     margin-top: 10px
     margin-left: 20px
     .clicked
-      position: absolute
-      height 230px
-      margin-top: 50px
-      background-color: grey !important
+      position: relative
+      height: $card-h
+      margin-top: -15px
       width: 100%
-      .eng, .word
+      .content
         position: absolute
-        margin-left: 40px
-        //top: 50px
-        width: 250px
-        font-family: 'stolzl-med'
-        text-transform: uppercase
-        color: white
-        text-align: center
-        font-size: 25px
-      .rus, .rus-sentence
-        transform: rotateY(180deg)
+        top: 0px
+        height: $card-h
+        width: 100%
+        .angle-bar
+          // background-color: red
+          z-index: 200
+          height: 20px
+          width: auto
+          position: absolute
+        .right
+          right: 10px
+        .left
+          left: 10px 
+        .top
+          top: 25px
+        .bottom
+          bottom: 10px
 
-      .sentence,
-        position: absolute
-        margin-left: 40px
-        width: 250px
+        .info-bar
+          z-index: 100
+          height: $card-h
+          // background-color: grey !important
+          .eng, .word
+            position: absolute
+            top: 50px
+            width: 250px
+            // background-color: grey
+            font-family: 'stolzl-med'
+            text-transform: uppercase
+            color: white
+            text-align: center
+            font-size: 25px
+          .rus, .rus-sentence
+            transform: rotateY(180deg)
+          .sentence,
+            position: absolute
+            width: 250px
+            color: white
+            font-family: 'stolzl-reg'
+            text-align: center
+            top: 90px
+      .kind
+        margin-top: 5px
+        padding: 2px 15px
+        // background-color: grey
+        font-size: 16px
         color: white
+        border: 1px solid white
+        border-radius: 2px
         font-family: 'stolzl-reg'
-        text-align: center
-        top: 80px

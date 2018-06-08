@@ -12,6 +12,7 @@ $grey: #DFDEDD
   width: 1030px
   margin: 0px auto
   .preview
+    $card-h: 200px
     background-color: $grey
     transform-style: preserve-3d
     transitin: 0.5s
@@ -22,26 +23,63 @@ $grey: #DFDEDD
     cursor: pointer
     margin-top: 10px
     margin-left: 20px
-    .eng, .word
-      position: absolute
-      margin-left: 40px
-      top: 20px
-      width: 250px
-      font-family: 'stolzl-med'
-      text-transform: uppercase
-      color: white
-      text-align: center
-      font-size: 25px
-    .rus, .rus-sentence
-      transform: rotateY(180deg)
-    .sentence,
-      position: absolute
-      margin-left: 40px
-      width: 250px
-      color: white
-      font-family: 'stolzl-reg'
-      text-align: center
-      top: 130px
+    .clicked
+      position: relative
+      height: $card-h
+      // margin-top: -15px
+      width: 100%
+      // background-color: red
+      .content
+        position: absolute
+        top: 0px
+        height: $card-h
+        width: 100%
+        .angle-bar
+          z-index: 200
+          height: 20px
+          width: auto
+          position: absolute
+        .kind
+          margin-top: 5px
+          padding: 2px 15px
+          // background-color: grey
+          font-size: 16px
+          color: white
+          border: 1px solid white
+          border-radius: 2px
+          font-family: 'stolzl-reg'          
+        .right
+          right: 10px
+        .left
+          left: 10px 
+        .top
+          top: 25px
+        .bottom
+          bottom: 20px
+
+        .info-bar
+          z-index: 100
+          height: $card-h
+          // background-color: grey !important
+          .eng, .word
+            position: absolute
+            top: 50px
+            width: 250px
+            // background-color: grey
+            font-family: 'stolzl-med'
+            text-transform: uppercase
+            color: white
+            text-align: center
+            font-size: 25px
+          .rus, .rus-sentence
+            transform: rotateY(180deg)
+          .sentence,
+            position: absolute
+            width: 250px
+            color: white
+            font-family: 'stolzl-reg'
+            text-align: center
+            top: 90px
 
   .groups
     display: flex
@@ -112,7 +150,14 @@ $grey: #DFDEDD
             100%
               transform: translateY(0px)
 
-
+.selecter
+  display: flex
+  flex-direction: row
+  flex-wrap: no-wrap
+  .var
+    height: 40px
+    margin-top: 30px
+    font-family: 'stolzl-light'
 .submit
   float: right
   margin-right: 7%

@@ -7,10 +7,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
+import { HelperService } from './services/helper.service';
 import { Card } from './models/card';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardAddComponent } from './components/card-add/card-add.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { MyFilterPipe } from './my-filter.pipe';
+import { BehaviorSubject, Observable } from "rxjs";
+import { SelecterComponent } from './components/selecter/selecter.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,8 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     CardsComponent,
     CardAddComponent,
     ColorPickerComponent,
+    MyFilterPipe,
+    SelecterComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,7 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     ]),
 
   ],
-  providers: [ApiService],
+  providers: [ApiService, HelperService, {provide: 'navState', useValue: 'active'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

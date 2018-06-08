@@ -3,6 +3,7 @@ import { ApiService } from '../../api.service';
 import { Card } from '../../models/card';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-card-add',
@@ -39,25 +40,37 @@ export class CardAddComponent implements OnInit {
   public colorState = 'inactive';
   public cardState  = 'inactive';
   public selectedColor = null;
+  public filters = {kind: ''};  
+  public kinds : Array<any>;
 
 
-  constructor(public apiService: ApiService , public acRoute : ActivatedRoute) { }
+  constructor(public apiService: ApiService ,
+    public acRoute : ActivatedRoute,
+    public _: HelperService) { }
 
   ngOnInit() {
+    this.apiService.get("kinds").subscribe((data: any)=>{
+      this.kinds = data;
+      console.log(data);
+    })       
     this.acRoute.params.subscribe((data : any)=>{
     if(data && data.id){
         this.apiService.get("cards/"+data.id).subscribe((data : Card)=>{
-        this.card = data;
+          this.card = data;
+          this.filters.kind = this._.find(this.kinds, function(obj){return obj.id == data.kind_id}).name;
         });
     }
     else
     {
         this.card = new Card();
     }
-    })  
+    }) 
   }
 
   public onSubmit(){
+      var selected = this.filters.kind;
+      var obj = this._.find(this.kinds, function(obj){return obj.name == selected});
+      this.card.kind_id = obj.id;    
       if(this.card.id){
       this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
         window.location.href = '/';
@@ -73,6 +86,7 @@ export class CardAddComponent implements OnInit {
   public selectColor(color){
     this.selectedColor = color;
     this.card.colorHash = color;
+    console.log(this.filters.kind);
   }
 
   public changeState(): void{

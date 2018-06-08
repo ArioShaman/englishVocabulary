@@ -2,6 +2,10 @@
   <a routerLink="/cards">
     <div class="link">Cards</div>
   </a>
+
+  <div class="side-panel" [@navState]="navState">
+    <div class="icon" (click)="openMenu()"></div>
+  </div>
 </div>
 
 <div class="body">

@@ -1,0 +1,47 @@
+$butt-h: 25px
+$grey: #DFDEDD
+$darkred:  #973130
+.button
+  height: $butt-h
+  width: 150px
+  margin-top: 25px
+  text-align: center
+  color: #973130
+  font-size: 14px
+  font-family: 'stolzl-reg'
+  padding-top: 7px
+  transition: 0.9s
+  cursor: pointer
+  background-color: white
+.clickable
+  &:hover
+    background-color: #973130
+    color: white
+.selecter
+  &:hover
+    .list
+      display: block !important
+  .selected 
+    color:  $darkred !important
+  .select
+    height: $butt-h
+    width: 100%
+    color: #B5B5B5
+  .list
+    // padding-top: 50px
+    display: none
+    position: absolute
+    height: auto
+    overflow-y: auto
+    max-height: 140px
+    width: 150px
+    background-color: white
+    &::-webkit-scrollbar
+      width: 0px
+    .list-el
+      padding-top: 7px
+      height: 25px
+      width: 100%
+      transition: 0.8s
+      &:hover
+        background-color: #B5B5B5

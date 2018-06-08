@@ -1,0 +1,11 @@
+<div class="button selecter">
+  <div class="select" *ngIf="filters['kind'] === ''" > -- Select --</div>
+  <div class="select selected" *ngIf="filters['kind'] " >{{filters['kind'] }}</div>
+  <div class="list">
+    <div *ngFor="let kind of kinds">
+      <div class="list-el" (click)="selectKind(kind['name'])">  
+         {{kind['name']}}
+       </div>  
+     </div>                        
+  </div>
+</div>

@@ -4,7 +4,6 @@ class CardsController < ApplicationController
   # GET /cars
   def index
     @cards = Card.all.order('created_at desc')
-    render json: @cards
   end
 
   # GET /cars/1
@@ -45,6 +44,6 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.require(:card).permit(:eng, :rus, :engSentence, :rusSentence, :colorHash)
+      params.require(:card).permit(:eng, :rus, :engSentence, :rusSentence, :colorHash, :kind_id)
     end
 end
