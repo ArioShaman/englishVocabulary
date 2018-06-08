@@ -1,4 +1,19 @@
 <div class="content-container">
+
+  <modal [opened]="opened">
+    <div class="modal-body" [ngClass]="opened? 'modal-open':''">
+      <div class="space"></div>
+      <div class="modal">
+        <div class="close" (click)="close()"></div>
+        <h3>Are you realy do you want to delete card ?</h3>
+        <div class="buttons">
+          <div class="mod-butt green" (click)="destroy(deleteId)">Yes</div>
+          <div class="mod-butt" (click)="close()">No</div>
+        </div>
+      </div>
+    </div>  
+  </modal>
+
   <div class="cards-body">
     <div class="title">You can choose word</div>
 

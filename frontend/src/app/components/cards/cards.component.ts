@@ -1,10 +1,10 @@
-import { Component, OnInit , Input, Inject} from '@angular/core';
+import { ContentChild, ViewChild, Component, OnInit , Input, Inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { Card } from '../../models/card';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 import { HelperService } from '../../services/helper.service';
-
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-cards',
@@ -47,6 +47,10 @@ export class CardsComponent implements OnInit {
   public kinds : Array<any>;
   public selectedCard: Card;
   public filters = {kind: ''};
+  public opened:boolean = false;
+  public deleteId:number;
+
+  // @ViewChild(ModalComponent) modalComponent: ModalComponent;
 
   constructor(public apiService: ApiService,
    public router : Router,
@@ -67,6 +71,18 @@ export class CardsComponent implements OnInit {
       console.log(this.cards);
     });
   }
+  //разобраться с переопределением метода ребенка
+  // ngAfterViewInit(){
+  //   this.modalComponent.close();
+  // }
+
+  public open(){
+    this.opened = true;
+  }
+
+  public close(){
+    this.opened = false;
+  }
 
   public onFilter(kind:string){
     this.filters.kind = kind;
@@ -78,9 +94,7 @@ export class CardsComponent implements OnInit {
   public shuffle():void{
     this.cards = this._.shuffle(this.cards);
   }
-  public delete(id:string){
-
-    console.log("delete : " + id);
+  public destroy(id:number){
     var path = 'cards/' + id;
     this.apiService.delete(path).subscribe((r)=>{
 
@@ -91,8 +105,14 @@ export class CardsComponent implements OnInit {
           }
           return true;
       },this.cards)
+    });    
+    this.close();
+  }
+  public delete(id:number){
+    this.open();
+    this.deleteId = id;
+    // console.log("delete : " + id);
 
-    });
 
   }
   public disactive(actCard):void{

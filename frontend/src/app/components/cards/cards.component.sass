@@ -1,5 +1,69 @@
 $grey: #DFDEDD
+$gray: #707070
 $darkred:  #973130
+modal
+  .modal-open
+    display: block !important
+  .modal-body
+    z-index: 900
+    height: 100%
+    width: 100%
+    position: absolute 
+    margin: 0px auto
+    display: none
+    .space
+      position: absolute
+      // background-color: white
+      height: 100%
+      width: 100%    
+    .modal
+      box-shadow: 0px 0px 15px 0px grey
+      position: relative
+      min-height: 150px
+      width: 400px
+      margin: 0px auto
+      margin-top: 100px
+      background-color: white
+      h3
+        padding-top: 45px
+        font-size: 15px
+        font-family: 'stolzl-reg'
+        padding-left: 25px
+        color: $gray
+      .buttons
+        height: 25px
+        width: 250px
+        // background-color: grey
+        margin: 0px auto
+        display: flex
+        justify-content: space-between
+        margin-top: 35px
+        .green
+          background-color: #AAFF8F !important
+        .mod-butt
+          cursor: pointer
+          padding-top: 5px
+          text-align: center
+          font-family: 'stolzl-reg'
+          color: white
+          height: 25px
+          width: 100px
+          background-color: $grey
+          transition: 0.5s
+          &:hover
+            transform: translateY(-5px)
+      .close
+        cursor: pointer
+        color: black
+        position: absolute
+        height: 25px
+        width: 25px
+        background-color: grey
+        background-size: cover
+        right: 10px
+        top: 10px
+        background-image: url('/assets/images/close.svg')  
+
 .content-container
   height: 100%
   width: 100%

@@ -1,7 +1,7 @@
 import { Component, OnInit , Input, Inject} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { trigger, state, style, animate, transition, query, animateChild, keyframes};
+import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 import { Kind } from '../../models/kind';
 
 

@@ -39,8 +39,7 @@ export class CardAddComponent implements OnInit {
   public colors = ["#A3FF8A", "#94CCFF", "#C55E59", "#FC8A40" , "#40FCB4", "#B767D0"];
   public colorState = 'inactive';
   public cardState  = 'inactive';
-  public selectedColor = null;
-  public selectedCard:boolean = false;  
+  public selectedColor = null; 
   public filters = {kind: ''};  
   public kinds : Array<any>;
 
@@ -94,7 +93,6 @@ export class CardAddComponent implements OnInit {
     this.colorState = this.colorState === 'active' ? 'inactive' : 'active';
   }  
   public changeCardState(): void{
-    this.cardState = this.cardState === 'active' ? 'inactive' : 'active';
-    this.selectedCard = !this.selectedCard;      
+    this.cardState = this.cardState === 'active' ? 'inactive' : 'active';     
   }
 }
