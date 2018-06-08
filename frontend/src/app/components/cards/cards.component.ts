@@ -18,8 +18,8 @@ import { HelperService } from '../../services/helper.service';
       state('active',   style({
         transform: 'rotateY(180deg)'
       })),
-      transition('inactive => active', animate('700ms')),
-      transition('active => inactive', animate('700ms')),
+      transition('inactive <=> active', animate('700ms')),
+      // transition('active => inactive', animate('700ms')),
     ]),   
     trigger('navState', [
       state('inactive', style({
@@ -95,12 +95,22 @@ export class CardsComponent implements OnInit {
     });
 
   }
+  public disactive(actCard):void{
+    var arr = this._.map(this.cards, function(card){
+      if (card !== actCard){
+        card.state = 'inactive';
+      }
+    });
+    // console.log(arr);
+  }
+
   public update(id:string){
     console.log("update : " + id );
     this.router.navigateByUrl('/products/add/' + id);
   }
 
   public onSelect(card: Card): void {
+    this.disactive(card);
     this.changeState(card);
     if(this.selectedCard !== card){
       this.selectedCard = card;

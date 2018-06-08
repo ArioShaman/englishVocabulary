@@ -16,4 +16,7 @@ export class HelperService {
   public find(list, predicate) {
     return _.find(list, predicate) ;
   }
+  public map(list, iteratee){
+    return _.map(list, iteratee); 
+  }
 }

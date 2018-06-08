@@ -72,23 +72,23 @@
 
               <dir class="info-bar" (click)="changeCardState()" [@cardState]="cardState">
                 <div class="eng word card-content"
-                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                  [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
                 >
                   {{card['eng']}}
                 </div>
                 <div class="rus word card-content"
-                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                  [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
                 >
                   {{card['rus']}}
                 </div>
                 <div class="sentence eng-sentence card-content"
-                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
+                  [style.visibility]="cardState === 'active' ? 'hidden': 'visible'"
                 >
                   {{card['engSentence']}}
                   </div>
 
                 <div class="sentence rus-sentence card-content"
-                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
+                  [style.visibility]="cardState === 'active' ? 'visible' : 'hidden'"
                 >
                   {{card['rusSentence']}}
                 </div>

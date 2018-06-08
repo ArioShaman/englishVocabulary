@@ -40,6 +40,7 @@ export class CardAddComponent implements OnInit {
   public colorState = 'inactive';
   public cardState  = 'inactive';
   public selectedColor = null;
+  public selectedCard:boolean = false;  
   public filters = {kind: ''};  
   public kinds : Array<any>;
 
@@ -70,7 +71,7 @@ export class CardAddComponent implements OnInit {
   public onSubmit(){
       var selected = this.filters.kind;
       var obj = this._.find(this.kinds, function(obj){return obj.name == selected});
-      this.card.kind_id = obj.id;    
+      this.card.kind_id = obj.id; 
       if(this.card.id){
       this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
         window.location.href = '/';
@@ -94,5 +95,6 @@ export class CardAddComponent implements OnInit {
   }  
   public changeCardState(): void{
     this.cardState = this.cardState === 'active' ? 'inactive' : 'active';
+    this.selectedCard = !this.selectedCard;      
   }
 }
