@@ -49,10 +49,7 @@ export class CardAddComponent implements OnInit {
     public _: HelperService) { }
 
   ngOnInit() {
-    this.apiService.get("kinds").subscribe((data: any)=>{
-      this.kinds = data;
-      console.log(data);
-    })       
+    this.getKinds();   
     this.acRoute.params.subscribe((data : any)=>{
     if(data && data.id){
         this.apiService.get("cards/"+data.id).subscribe((data : Card)=>{
@@ -67,20 +64,31 @@ export class CardAddComponent implements OnInit {
     }) 
   }
 
+  public getKinds(){
+    this.apiService.get("kinds").subscribe((data: any)=>{
+      this.kinds = data;
+    })          
+  } 
+   
   public onSubmit(){
-      var selected = this.filters.kind;
-      var obj = this._.find(this.kinds, function(obj){return obj.name == selected});
-      this.card.kind_id = obj.id; 
-      if(this.card.id){
-      this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
-        window.location.href = '/';
-      })
-      }
-      else
-        this.apiService.post("cards",this.card).subscribe((r)=>{
-        this.card = new Card();
-        window.location.href = '/';
-      });
+      this.apiService.get("kinds").subscribe((data: any)=>{
+        this.kinds = data;
+        var selected = this.filters.kind;
+        // console.log(this.kinds);
+        // console.log(selected);
+        var obj = this._.find(this.kinds, function(obj){return obj.name == selected});
+        this.card.kind_id = obj.id; 
+        if(this.card.id){
+        this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
+          window.location.href = '/';
+        })
+        }
+        else
+          this.apiService.post("cards",this.card).subscribe((r)=>{
+          this.card = new Card();
+          window.location.href = '/';
+        });
+      })   
   }
 
   public selectColor(color){

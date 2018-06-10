@@ -16,7 +16,7 @@ import { MyFilterPipe } from './my-filter.pipe';
 import { BehaviorSubject, Observable } from "rxjs";
 import { SelecterComponent } from './components/selecter/selecter.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { ModalDirective } from './directives/modal.directive';
+// import { ModalDirective } from './directives/modal.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { ModalDirective } from './directives/modal.directive';
     MyFilterPipe,
     SelecterComponent,
     ModalComponent,
-    ModalDirective,
+    // ModalDirective,
   ],
   imports: [
     BrowserModule,

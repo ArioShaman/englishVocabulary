@@ -1,11 +1,19 @@
 <div class="button selecter">
-  <div class="select" *ngIf="filters['kind'] === ''" > -- Select --</div>
-  <div class="select selected" *ngIf="filters['kind'] " >{{filters['kind'] }}</div>
+<!--   <div class="select" *ngIf="filters['kind'] === ''" > -- Select --</div>
+  <div class="select selected" *ngIf="filters['kind'] " >{{filters['kind'] }}</div> -->
+  <input class="select" AUTOCOMPLETE="off" type="name" placeholder="-- Select --" name="kind"
+    [(ngModel)]="filters['kind']">
   <div class="list">
     <div *ngFor="let kind of kinds">
-      <div class="list-el" (click)="selectKind(kind['name'])">  
+      <div class="list-el" [ngClass]="filters['kind'] == kind['name']? 'active':''" (click)="selectKind(kind['name'])">  
          {{kind['name']}}
        </div>  
-     </div>                        
+     </div> 
+
+     <div class="list-el" *ngIf="!isInArray(kinds, filters['kind'])"></div>
   </div>
+  
+  <div class="list-el add" *ngIf="!isInArray(kinds, filters['kind'])" 
+    (click)="create(filters['kind'])"
+  >ADD</div>       
 </div>

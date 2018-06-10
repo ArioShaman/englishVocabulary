@@ -19,4 +19,11 @@ export class HelperService {
   public map(list, iteratee){
     return _.map(list, iteratee); 
   }
+
+  public contains(list, value){
+    return _.contains(list, value); 
+  } 
+  public pluck(list, propertyName){
+    return _.pluck(list, propertyName);
+  } 
 }

@@ -21,27 +21,48 @@ $darkred:  #973130
   &:hover
     .list
       display: block !important
+    .add
+      display: block !important
   .selected 
     color:  $darkred !important
   .select
-    height: $butt-h
-    width: 100%
-    color: #B5B5B5
+    padding-top:
+    height: $butt-h - 5px
+    text-align: center
+    width: 145px
+    border: 0px solid white
+    font-family: 'stolzl-reg'
+    // padding-left: 15px
+    color: grey
+    &:hover, &:focus
+      border: 0px solid white
+      outline: none
+  .add
+    display: none
+    position: absolute
+    // bottom: 0px
+    margin-top: 125px
+    background-color: #FC8A40
+    color: #3D1600
+    &:hover
+      background-color: #A3FF8A
+  .list-el
+    padding-top: 7px
+    height: 25px
+    width: 150px
+    transition: 0.8s
+    &:hover
+      background-color: #B5B5B5
   .list
     // padding-top: 50px
     display: none
     position: absolute
     height: auto
     overflow-y: auto
-    max-height: 140px
+    max-height: 155px
     width: 150px
     background-color: white
     &::-webkit-scrollbar
       width: 0px
-    .list-el
-      padding-top: 7px
-      height: 25px
-      width: 100%
-      transition: 0.8s
-      &:hover
-        background-color: #B5B5B5
+    .active
+      background-color: #B5B5B5
