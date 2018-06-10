@@ -5,6 +5,9 @@ import { Card } from '../../models/card';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 import { HelperService } from '../../services/helper.service';
 import { ModalComponent } from '../modal/modal.component';
+import {  AuthService } from "../../services/auth.service";
+import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
+import {  Router } from "@angular/router";
 
 @Component({
   selector: 'app-cards',
@@ -55,13 +58,18 @@ export class CardsComponent implements OnInit {
   constructor(public apiService: ApiService,
    public router : Router,
     @Inject('navState') public navState:string,
-    public _: HelperService
+    public _: HelperService,
+    public authService:AuthService,
+    public authTokenService:Angular2TokenService
     ) {
+      this.authTokenService.init();
     // console.log(navState);
   }
 
   
   ngOnInit() {
+    this.currentUser = this.authTokenService.currentUserData;
+    console.log(this.currentUser);
     this.apiService.get("cards")
     .subscribe((data : Card[])=>{
       for(let obj of data){
@@ -76,6 +84,10 @@ export class CardsComponent implements OnInit {
   //   this.modalComponent.close();
   // }
 
+  public logOut(){
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
+  }
+
   public open(){
     this.opened = true;
   }
@@ -89,6 +101,7 @@ export class CardsComponent implements OnInit {
   }
 
   public resetFilter():void{
+    // console.log(this.authTokenService.currentUserData[);
     this.filters.kind = ''; 
   }
   public shuffle():void{

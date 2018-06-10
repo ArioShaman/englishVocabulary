@@ -7,12 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Kind.create!({name: 'food'})
+# Kind.create!({name: 'food'})
 
-Card.create!([
-  {eng: 'outta(out + of)', rus: 'отсюда' , engSentence: 'Get outta here', rusSentence: 'Иди отсюда прочь', colorHash: '#A3FF8A'},
-  {eng: 'gimme(give + me)', rus: 'дай' , engSentence: 'Gimme a break gimme', rusSentence: 'Дай мне отдохнуть', colorHash: '#94CCFF'},
-  {eng: "dunno (doesn't/don't + know)", rus: 'не знаю' , engSentence: ' I dunno what to do', rusSentence: 'Я не знаю что делать', colorHash: '#C55E59'},
-])
+# Card.create!([
+#   {eng: 'outta(out + of)', rus: 'отсюда' , engSentence: 'Get outta here', rusSentence: 'Иди отсюда прочь', colorHash: '#A3FF8A'},
+#   {eng: 'gimme(give + me)', rus: 'дай' , engSentence: 'Gimme a break gimme', rusSentence: 'Дай мне отдохнуть', colorHash: '#94CCFF'},
+#   {eng: "dunno (doesn't/don't + know)", rus: 'не знаю' , engSentence: ' I dunno what to do', rusSentence: 'Я не знаю что делать', colorHash: '#C55E59'},
+# ])
 
+
+User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "password")
 

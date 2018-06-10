@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
+import {Angular2TokenService} from "angular2-token";
+import {environment} from "../environments/environment";
+import { HttpClient } from '@angular/common/http';
 // import { GlobalVariable } from 'globals';
 
 @Component({
@@ -27,8 +30,9 @@ export class AppComponent {
   // public title = 'app';
   // public navState = 'active';
 
-  constructor(@Inject('navState') public navState:string) {
+  constructor(@Inject('navState') public navState:string, private authToken: Angular2TokenService) {
     // console.log(navState);
+    this.authToken.init(environment.token_auth_config);
   }
 
   public openMenu():void{

@@ -15,7 +15,7 @@
   </modal>
 
   <div class="cards-body">
-    <div class="title">You can choose word</div>
+    <div class="title">You can choose word {{authTokenService.currentUserData.email}}</div>
 
     <div class="cards"> 
 
@@ -87,13 +87,17 @@
     </div>
     
   </div>
-  <div class="sidebar" [@navState]="navState">
+<!--   <div class="sidebar" [@navState]="navState">
     <div class="buttons">
       <div class="button clickable" (click)="resetFilter()">reset filter</div>
       <div class="button clickable" (click)="shuffle()">reshufle cards</div>
+    -->
 
-      <!-- Selecter -->
-      <app-selecter [filters]="filters" ></app-selecter>
+      <!--<!-- Selecter -->
+    
+    <!-- <app-selecter [filters]="filters" ></app-selecter>
+
+      <div class="button clickable" (click)="logOut()">LogOut</div>      
     </div>
-  </div>
+  </div> -->
 </div>
