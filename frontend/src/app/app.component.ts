@@ -26,6 +26,7 @@ import { HttpClient } from '@angular/common/http';
   ]  
 
 })
+
 export class AppComponent {
   // public title = 'app';
   // public navState = 'active';

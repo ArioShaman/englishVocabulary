@@ -19,10 +19,7 @@ export class AuthDialogComponent implements OnInit {
 
 
   onLoginFormResult(e){
-
-
     if(e.signedIn)
-      console.log(e);
       this.router.navigateByUrl('/cards');
     else{
       console.log(e.err);

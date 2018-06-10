@@ -10,5 +10,14 @@
 
 <div class="body">
   <router-outlet></router-outlet>
+
+  <div class="sidebar" [@navState]="navState">
+    <div class="buttons">
+      <div class="button clickable">reset filter</div>
+      <div class="button clickable">reshufle cards</div>
+
+      <div class="button clickable">LogOut</div>      
+    </div>
+  </div>  
 </div>
 
