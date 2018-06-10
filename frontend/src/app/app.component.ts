@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
+// import {Angular2TokenService} from "angular2-token";
+
 // import { GlobalVariable } from 'globals';
 
 @Component({
