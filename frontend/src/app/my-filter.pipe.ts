@@ -9,14 +9,6 @@ import { Filter } from './models/filter';
 
 export class MyFilterPipe implements PipeTransform {
 
-  // transform(items: any[], field : string, value : string): any[] {  
-  //   if (!items) return [];
-  //   if (!value || value.length == 0) return items;
-  //   return items.filter(it => 
-  //     it[field].indexOf(value) !=-1
-  //   );
-  // }
-
   transform(items: any[], filter: Filter): any[] {  
     if (!items) return [];
     if (!filter.kind || filter.kind.length == 0) return items;

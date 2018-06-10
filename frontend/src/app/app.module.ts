@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,10 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { SelecterComponent } from './components/selecter/selecter.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { Angular2TokenService } from 'angular2-token';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import {AuthService} from "./services/auth.service";
 // import { ModalDirective } from './directives/modal.directive';
 
 @NgModule({
@@ -29,6 +34,9 @@ import { Angular2TokenService } from 'angular2-token';
     MyFilterPipe,
     SelecterComponent,
     ModalComponent,
+    AuthDialogComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
     // ModalDirective,
   ],
   imports: [
@@ -36,6 +44,7 @@ import { Angular2TokenService } from 'angular2-token';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     RouterModule.forRoot([
       { 
         path: '',   
@@ -49,18 +58,23 @@ import { Angular2TokenService } from 'angular2-token';
         path: 'cards/add',
         component: CardAddComponent
       },  
-    {
+      {
         path: 'cards/add/:id',
         component: CardAddComponent
-      },               
+      },  
+      {
+        path: 'auth',
+        component: AuthDialogComponent
+      }             
     ]),
 
   ],
   providers: [
-    ApiService
-   ,Angular2TokenService
-   ,HelperService
-   ,{provide: 'navState', useValue: 'active'}
+     ApiService
+   , Angular2TokenService
+   , AuthService
+   , HelperService
+   , {provide: 'navState', useValue: 'active'}
   ],
   bootstrap: [AppComponent]
 })

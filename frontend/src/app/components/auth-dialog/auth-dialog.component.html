@@ -1,0 +1,21 @@
+<div class="auth-body">
+  <div class="modal">
+    <h3 class="title">{{authMode}}</h3>
+
+    <login-form (onFormResult)="onLoginFormResult($event)" *ngIf="isLoginMode()"></login-form>
+    <register-form *ngIf="isRegisterMode()"></register-form>
+
+    <div class="mode mess">
+      <span *ngIf="isLoginMode()">
+          Need an account? <a (click)="authMode='Register'">Click here to register.</a>
+      </span>
+        
+      <span *ngIf="isRegisterMode()">
+        Already have an account? <a (click)="authMode='Login'">Click here to login.</a>
+      </span>
+
+    </div>
+    
+    <div class="empty"></div>
+  </div>
+</div>
