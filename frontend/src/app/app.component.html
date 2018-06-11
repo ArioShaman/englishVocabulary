@@ -9,6 +9,18 @@
 </div>
 
 <div class="body">
-  <router-outlet></router-outlet>
+  <div id="content">
+    <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" ></router-outlet>
+  </div>
+
+  <div class="sidebar" [@navState]="navState">
+    <div class="content">
+      <div class="buttons">
+
+      <cards-bar *ngIf="state == 'cards'"></cards-bar>  
+      <vocs-bar *ngIf="state == 'vocs'"></vocs-bar>    
+      </div>
+    </div>
+  </div>  
 </div>
 

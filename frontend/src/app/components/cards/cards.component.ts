@@ -8,6 +8,9 @@ import { ModalComponent } from '../modal/modal.component';
 import {  AuthService } from "../../services/auth.service";
 import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
 import {  Router } from "@angular/router";
+import {Observable} from 'rxjs/Observable';
+import {  SharedService } from "../../services/shared.service";
+import { CardsService } from "../../services/cards.service";
 
 @Component({
   selector: 'app-cards',
@@ -52,6 +55,7 @@ export class CardsComponent implements OnInit {
   public filters = {kind: ''};
   public opened:boolean = false;
   public deleteId:number;
+  public state = 'cards';
 
   // @ViewChild(ModalComponent) modalComponent: ModalComponent;
 
@@ -60,7 +64,9 @@ export class CardsComponent implements OnInit {
     @Inject('navState') public navState:string,
     public _: HelperService,
     public authService:AuthService,
-    public authTokenService:Angular2TokenService
+    public authTokenService:Angular2TokenService,
+    public shared:SharedService,
+    public cardsService:CardsService
     ) {
       this.authTokenService.init();
     // console.log(navState);
@@ -69,20 +75,29 @@ export class CardsComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = this.authTokenService.currentUserData;
-    console.log(this.currentUser);
+    // console.log(this.currentUser);
     this.apiService.get("cards")
     .subscribe((data : Card[])=>{
       for(let obj of data){
         obj["state"] = 'inactive';
       }
       this.cards = data;
-      console.log(this.cards);
+      this.cardsService.insertData(this.cards);
+      this.shared.set(this.state);     
     });
+    this.filters = this.cardsService.filters;
+    console.log(this.filters);
+    // console.log(this.cardsService.getCards());
+    // console.log(this.cards);
   }
   //разобраться с переопределением метода ребенка
   // ngAfterViewInit(){
   //   this.modalComponent.close();
   // }
+
+  sayhello(){
+    console.log('hello!!');
+  }
 
   public logOut(){
     this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
@@ -97,13 +112,14 @@ export class CardsComponent implements OnInit {
   }
 
   public onFilter(kind:string){
-    this.filters.kind = kind;
+    // this.filters.kind = kind;
+    this.cardsService.setFilter(kind);
   }
 
-  public resetFilter():void{
-    // console.log(this.authTokenService.currentUserData[);
-    this.filters.kind = ''; 
-  }
+  // public resetFilter():void{
+  //   // console.log(this.authTokenService.currentUserData[);
+  //   this.filters.kind = ''; 
+  // }
   public shuffle():void{
     this.cards = this._.shuffle(this.cards);
   }

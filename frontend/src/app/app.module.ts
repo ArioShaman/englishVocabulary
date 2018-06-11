@@ -23,7 +23,13 @@ import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.compon
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import {AuthService} from "./services/auth.service";
+import {SharedService} from "./services/shared.service";
+import { CardsBarComponent } from './components/cards-bar/cards-bar.component';
+import { CardsService } from "./services/cards.service";
+import { VocsComponent } from './components/vocs/vocs.component';
+import { VocsBarComponent } from './components/vocs-bar/vocs-bar.component';
 // import { ModalDirective } from './directives/modal.directive';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +43,9 @@ import {AuthService} from "./services/auth.service";
     AuthDialogComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    CardsBarComponent,
+    VocsComponent,
+    VocsBarComponent,
     // ModalDirective,
   ],
   imports: [
@@ -48,12 +57,16 @@ import {AuthService} from "./services/auth.service";
     RouterModule.forRoot([
       { 
         path: '',   
-        redirectTo: '/cards', 
+        redirectTo: '/vocs', 
         pathMatch: 'full' },      
       {
         path: 'cards',
         component: CardsComponent
       },
+      {
+        path: 'vocs',
+        component: VocsComponent
+      },      
       {
         path: 'cards/add',
         component: CardAddComponent
@@ -73,7 +86,9 @@ import {AuthService} from "./services/auth.service";
      ApiService
    , Angular2TokenService
    , AuthService
+   , SharedService
    , HelperService
+   , CardsService
    , {provide: 'navState', useValue: 'active'}
   ],
   bootstrap: [AppComponent]
