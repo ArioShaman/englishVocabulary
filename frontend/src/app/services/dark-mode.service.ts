@@ -14,13 +14,10 @@ export class DarkModeService {
   }
 
   public get(){
-    console.log(this.darkMode);
     return this.darkMode;
   }
   public changeMode(){
     this.darkMode = !this.darkMode;
     this.darkModeChange.next(this.darkMode);
-    // this.darkMode = !this.darkMode;
-    console.log(this.darkMode);
   }
 }

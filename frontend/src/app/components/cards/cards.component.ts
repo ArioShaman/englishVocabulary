@@ -7,7 +7,6 @@ import { HelperService } from '../../services/helper.service';
 import { ModalComponent } from '../modal/modal.component';
 import {  AuthService } from "../../services/auth.service";
 import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
-import {  Router } from "@angular/router";
 import {Observable} from 'rxjs/Observable';
 import {  SharedService } from "../../services/shared.service";
 import { CardsService } from "../../services/cards.service";
@@ -56,6 +55,7 @@ export class CardsComponent implements OnInit {
   public opened:boolean = false;
   public deleteId:number;
   public state = 'cards';
+  public currentUser:any;
 
   // @ViewChild(ModalComponent) modalComponent: ModalComponent;
 

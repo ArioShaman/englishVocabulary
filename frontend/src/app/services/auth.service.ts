@@ -19,7 +19,7 @@ export class AuthService {
   logOutUser():Observable<Response>{
 
     return this.authService.signOut();
-    );
+
   }
 
   registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
