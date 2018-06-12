@@ -2,6 +2,7 @@ $grey: #F3F3F3
 $gray: #707070
 $darkred:  #973130
 
+$voc-body: #F3F3F3
 
 //DarkModeVars
 $darkGrey: #111111
@@ -21,3 +22,81 @@ $darkGrey: #111111
     border-radius: 10px
     margin: 0px auto
     margin-top: 50px 
+    .title
+      color: black
+      font-family: 'proxima-bold'
+      font-size: 25px
+      padding-top: 32px
+      margin-left: 67px
+    .vocs-flex
+      width: calc(100% - 120px)
+      margin: 0px auto
+      margin-top: 15px
+      height: auto
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      .ng-star-inserted
+        height: 124px
+        margin-top: 20px
+        margin-left: 30px
+      .grad01
+        background: linear-gradient(to top right, #EF3131, #4E36E0)
+        &:hover
+         background: linear-gradient(to bottom left, #EF3131, #4E36E0 )          
+      .grad02
+        background: linear-gradient(to top right, #39E036, #EFD031)
+        &:hover
+
+      .grad03
+        background: linear-gradient(to top right, #31E3EF, #B436E0)
+        &:hover
+          background: linear-gradient(to bottom left, #31E3EF, #B436E0)
+      .grad04
+        background: linear-gradient(to top right, #EFE731, #E03636)
+        &:hover
+          background: linear-gradient(to bottom left, #EFE731, #E03636)
+      .grad05
+        background: linear-gradient(to top right, #EF8C31, #36E047)
+        &:hover
+          background: linear-gradient(to bottom left, #EF8C31, #36E047)
+      .grad06
+        background: linear-gradient(to top right, #36ADE0, #31EF9F)
+        &:hover
+          background: linear-gradient(to bottom left, #36ADE0, #31EF9F)
+      .grad07
+        background: linear-gradient(to top right, #EF8C31, #E92B7B)
+        &:hover
+          background: linear-gradient(to bottom left, #EF8C31, #E92B7B)
+
+      .voc
+        cursor: pointer
+        border-radius: 15px
+        height: 124px
+        width: 220px
+        transition: 1s
+        // background: linear-gradient(to top right, #EF3131, #4E36E0 )
+        // clip-path: polygon( 0% 0%, 0% 100%, 100% 100%, 100% 0%)
+        &:hover
+          transform: scale(1.1, 1.1) 
+ 
+        .voc-content-block
+          z-index: 100
+          position: absolute
+          margin: 4px
+          height: calc(124px - 8px)
+          background-color: $voc-body
+          width: calc(220px - 8px)
+          border-radius: 12px
+          .name
+            padding-top: 32px
+            font-family: 'proxima-light'
+            font-size: 32px
+            color: black
+            text-align: center
+          .counts
+            font-family: 'proxima-light'
+            font-size: 8px
+            color: black
+            text-align: center
+            line-height: 8px

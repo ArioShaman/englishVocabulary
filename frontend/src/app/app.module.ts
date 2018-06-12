@@ -63,7 +63,7 @@ import { DarkModeService } from "./services/dark-mode.service";
         redirectTo: '/vocs', 
         pathMatch: 'full' },      
       {
-        path: 'cards',
+        path: 'vocs/:id/cards',
         component: CardsComponent
       },
       {

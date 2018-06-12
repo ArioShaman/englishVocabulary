@@ -87,13 +87,7 @@ export class CardsComponent implements OnInit {
     });
     this.filters = this.cardsService.filters;
     console.log(this.filters);
-    // console.log(this.cardsService.getCards());
-    // console.log(this.cards);
   }
-  //разобраться с переопределением метода ребенка
-  // ngAfterViewInit(){
-  //   this.modalComponent.close();
-  // }
 
   sayhello(){
     console.log('hello!!');

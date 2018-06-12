@@ -1,3 +1,30 @@
 <div class="vocs-body" [ngClass]="darkMode  ? 'dark-voc':''">
-  <div class="vocs"></div>
+  <div class="vocs">
+    <div class="title">All vocs</div>
+
+    <div class="vocs-flex">
+      <div *ngFor="let voc of vocs">
+        <div class="voc"
+          [ngClass]="[
+            voc.color == 'grad01' ? 'grad01':'',
+            voc.color == 'grad02' ? 'grad02':'',
+            voc.color == 'grad03' ? 'grad03':'',
+            voc.color == 'grad04' ? 'grad04':'',
+            voc.color == 'grad05' ? 'grad05':'',
+            voc.color == 'grad06' ? 'grad06':'',
+            voc.color == 'grad07' ? 'grad07':''
+            ]"
+          >
+          <a [routerLink]="['/vocs/'+voc.id+'/cards']" >
+            <div class="voc-content-block">
+              <div class="name">{{voc.name}}</div>
+              <div class="counts">69 words</div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

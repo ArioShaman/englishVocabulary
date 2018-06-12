@@ -1,9 +1,11 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :update, :destroy]
+  # before_action :authenticate_user!
 
   # GET /cars
   def index
     @cards = Card.all.order('created_at desc')
+    return @cards
   end
 
   # GET /cars/1
