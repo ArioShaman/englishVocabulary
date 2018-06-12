@@ -1,0 +1,49 @@
+//DarkModeVars
+$darkGrey: #111111
+
+.bar
+  height: 100%
+  width: 100%
+  position: absolute
+  background-color: white
+  // background-color: grey
+  bottom: 0
+
+.dark-mode
+  background-color: $darkGrey
+  color: white !important
+.buttons
+  height: auto
+  width: 250px   
+  .button
+    height: 40px
+    width: 100%
+    // background-color: grey
+    margin-top: 25px
+    text-align: center
+    display: flex
+    flex-direction: row
+    flex-wrap: no-wrap
+    &:nth-child(1)
+      top: 10px
+      margin-top: 5px
+    .icon
+      cursor: pointer
+      margin-top: 5px
+      margin-left: 10px
+      height: 30px
+      width: 30px
+      // background-color: $gray
+      background-size: cover
+    .globus
+      background-image: url('/assets/images/globus.png')  
+    .length
+      box-sizing: border-box
+      font-family: 'proxima-light'
+      cursor: pointer
+      height: 40px
+      padding-top: 10px
+      font-size: 16px
+      width: 150px
+      // background-color: $gray
+      margin-left: 10px  

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DarkModeService } from "../../services/dark-mode.service";
 
 @Component({
   selector: 'vocs-bar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VocsBarComponent implements OnInit {
 
-  constructor() { }
+  public darkMode:boolean;  
+  constructor(public darkModeService:DarkModeService) { 
+    this.darkModeService.darkModeChange.subscribe((value) => { 
+      this.darkMode = value; 
+    });    
+  }
 
   ngOnInit() {
+    this.darkMode = this.darkModeService.get();
   }
 
 }

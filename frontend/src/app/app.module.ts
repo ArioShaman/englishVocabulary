@@ -28,6 +28,8 @@ import { CardsBarComponent } from './components/cards-bar/cards-bar.component';
 import { CardsService } from "./services/cards.service";
 import { VocsComponent } from './components/vocs/vocs.component';
 import { VocsBarComponent } from './components/vocs-bar/vocs-bar.component';
+import { UpperSideBarComponent } from './components/upper-side-bar/upper-side-bar.component';
+import { DarkModeService } from "./services/dark-mode.service";
 // import { ModalDirective } from './directives/modal.directive';
 
 
@@ -46,6 +48,7 @@ import { VocsBarComponent } from './components/vocs-bar/vocs-bar.component';
     CardsBarComponent,
     VocsComponent,
     VocsBarComponent,
+    UpperSideBarComponent,
     // ModalDirective,
   ],
   imports: [
@@ -89,6 +92,7 @@ import { VocsBarComponent } from './components/vocs-bar/vocs-bar.component';
    , SharedService
    , HelperService
    , CardsService
+   , DarkModeService
    , {provide: 'navState', useValue: 'active'}
   ],
   bootstrap: [AppComponent]

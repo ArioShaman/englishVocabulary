@@ -16,7 +16,7 @@ export class SharedService {
       this.myGlobalVar = val;
     }
 
-    get(val: string){
+    get(){
       return this.myGlobalVar;
     }
 }

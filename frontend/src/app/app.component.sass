@@ -2,11 +2,27 @@ $grey: #DFDEDD
 $gray: #707070
 $darkred:  #973130
 
+
+
+//DarkModeVars
+$darkGrey: #111111
+
+.dark-nav
+  background-color: black !important
+  color: white !important
+  .side-panel
+    background-color: $darkGrey
+    .close
+      background-size: 20px !important
+      background-position: center
+      background-image: url('/assets/images/close.svg') !important   
+    .humburger
+      background-image: url('/assets/images/dark-humburger.svg') !important       
 .navbar
   top: 0px
   height: 50px
   width: 100%
-  background-color: #C55E59
+  background-color: white
   position: fixed
   z-index: 900 !important
   a
@@ -23,29 +39,65 @@ $darkred:  #973130
     padding-top: 5px
     text-align: center
     color: white
-    transition: 0.5s
-    &:hover
-      background-color: #973130
+    transition: linear 0.5s
+    cursor: pointer
+  .main
+    background-size: cover
+    background-image: url('/assets/images/VOCy.png')  
+  .nav-open
+    width: 250px
+    // transform: translateX(-200px)
+  .nav-close
+    // transform: translateX(0px)
+    width: 50px
   .side-panel
-    background-color: #973130
+    transition: linear 0.5s
+    // background-color: #973130
     height: 100% 
-    width: 200px 
     position: absolute
     top: 0px
     right: 0px
-    .icon
+    .close-block
+      position: absolute
+      height: 100%
+      width: 100%
+      top: 0px
+      display: flex
+      flex-direction: row
+      flex-wrap: no-wrap
+    .length
+      box-sizing: border-box
+      font-family: 'stolzl-reg'
       cursor: pointer
-      margin-top: 10px
-      margin-left: 13px
-      height: 30px
-      width: 25px
+      height: 40px
+      padding-top: 15px
+      font-size: 16px
+      width: 150px
+      // background-color: $gray
+      margin-left: 10px
+    .close
+      background-image: url('/assets/images/close-black.png')  
+    .humburger
+      background-position: center
+      background-size: 25px !important
+      background-image: url('/assets/images/humburger.svg')         
+    .icon
+      background-repeat: no-repeat
+      cursor: pointer
+      margin-top: 5px
+      margin-left: 5px
+      height: 40px
+      width: 40px
       // background-color: grey
       background-size: cover
-      background-image: url('/assets/images/humburger.svg')  
+      // background-image: url('/assets/images/close-black.png')  
 
 
 #content
   width: 100%
+  transition: width 0.5s
+.dark-body
+  background-color: black
 .body
   position: absolute
   height: calc(100% - 50px)
@@ -54,44 +106,75 @@ $darkred:  #973130
   display: flex
   flex-direction: row
   flex-wrap: no-wrap  
+.side-open
+  width: 250px
+  min-width: 250px
+  max-width: 250px
+.side-close
+  width: 50px
+  min-width: 50px
+  max-width: 50px
+.dark-mode
+  background-color: $darkGrey
+  .length
+    color: white !important
+  .setting
+    background-image: url('/assets/images/settings-white.svg') !important    
 .sidebar
-  // top: 0px
-  // right: 0px
-  // position: relative
+  transition: linear 0.5s
   height: 100%
-  width: 200px
-  min-width: 200px
-  max-width: 200px
   .content
-    background-color: #E8E8E8
+    transition: linear 0.5s
     height: 100%
-    width: 200px
-    // right: 0
-    position: absolute
+    width: 250px
+    position: fixed
+    top: 50px
+    right: 0
+    position: fixed
     .buttons
       height: auto
-      min-width: 200px
-      max-width: 200px
-      width: 200px      
-      // background-color: grey
-      // .button
-      //   height: 30px
-      //   width: 100%
-      //   background-color: red
-      //   margin-top: 25px
-      //   text-align: center
-  //   .button
-  //     color: #973130
-  //     font-size: 14px
-  //     font-family: 'stolzl-reg'
-  //     padding-top: 7px
-  //     transition: 0.9s
-  //     cursor: pointer
-  //     background-color: white
-  //   .clickable
-  //     &:hover
-  //       background-color: #973130
-  //       color: white
+      min-width: 250px
+      max-width: 250px
+      width: 250px   
+
+    .default-bar
+      position: absolute
+      width: 250px
+      height: 100px
+      // background-color: grey  
+      bottom: 0px 
+      .button
+        height: 40px
+        width: 100%
+        // background-color: grey
+        margin-top: 25px
+        text-align: center
+        display: flex
+        flex-direction: row
+        flex-wrap: no-wrap
+        &:nth-child(1)
+          top: 10px
+          margin-top: 5px
+        .icon
+          cursor: pointer
+          margin-top: 5px
+          margin-left: 10px
+          height: 30px
+          width: 30px
+          // background-color: $gray
+          background-size: cover      
+        .length
+          box-sizing: border-box
+          font-family: 'proxima-light'
+          cursor: pointer
+          height: 40px
+          padding-top: 10px
+          font-size: 16px
+          width: 150px
+          // background-color: $gray
+          margin-left: 10px   
+        .setting
+          background-image: url('/assets/images/settings.png')                   
   //   .selecter
   //     &:hover
   //       .list

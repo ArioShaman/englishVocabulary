@@ -1,25 +1,38 @@
-<div class="navbar">
-  <a routerLink="/cards">
+<div class="navbar" [ngClass]="darkMode  ? 'dark-nav':''">
+  <div class="link main"></div>
+<!--   <a routerLink="/cards">
     <div class="link">Cards</div>
-  </a>
+  </a> -->
 
-  <div class="side-panel" [@navState]="navState">
-    <div class="icon" (click)="openMenu()"></div>
+  <div class="side-panel" [ngClass]="navState == 'active'? 'nav-open':'nav-close'">
+    <div class="icon" [ngClass]="navState == 'active'? 'close':'humburger'" (click)="openMenu()"></div>
+    <div class="close-block" *ngIf="settings=='active'">
+      <div class="icon" (click)="Settings()"></div>
+      <div class="length">Settings</div>
+    </div>
   </div>
 </div>
 
-<div class="body">
+<div class="body" [ngClass]="darkMode  ? 'dark-body':''">
   <div id="content">
     <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" ></router-outlet>
   </div>
 
-  <div class="sidebar" [@navState]="navState">
-    <div class="content">
+  <div class="sidebar" [ngClass]="[navState == 'active'? 'side-open':'side-close', darkMode  ? 'dark-mode':'']">
+    <div class="content" [ngClass]="navState == 'active'? 'side-open':'side-close'">
       <div class="buttons">
 
-      <cards-bar *ngIf="state == 'cards'"></cards-bar>  
-      <vocs-bar *ngIf="state == 'vocs'"></vocs-bar>    
+        <cards-bar *ngIf="state == 'cards'"></cards-bar>  
+        <vocs-bar *ngIf="state == 'vocs'"></vocs-bar>    
+
       </div>
+      <div class="default-bar">
+        <div class="button">
+          <div class="icon setting" (click)="Settings()"></div>
+          <div class="length" (click)="Settings()">Settings</div>
+        </div>        
+      </div>
+      <upper-side-bar [Settings]="settings"></upper-side-bar>
     </div>
   </div>  
 </div>

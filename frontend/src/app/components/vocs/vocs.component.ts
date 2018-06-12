@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  SharedService } from "../../services/shared.service";
+import { DarkModeService } from "../../services/dark-mode.service";
 
 @Component({
   selector: 'app-vocs',
@@ -8,11 +9,18 @@ import {  SharedService } from "../../services/shared.service";
 })
 export class VocsComponent implements OnInit {
   public state = 'vocs';
-  
-  constructor(public shared:SharedService) { }
+  public darkMode:boolean;
+
+  constructor(public shared:SharedService,
+    public darkModeService:DarkModeService) {
+        this.darkModeService.darkModeChange.subscribe((value) => { 
+          this.darkMode = value; 
+        });    
+    }
 
   ngOnInit() {
-     this.shared.set(this.state);   
+    this.darkMode = this.darkModeService.get();
+    this.shared.set(this.state);   
   }
 
 }
