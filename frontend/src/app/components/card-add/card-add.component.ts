@@ -51,16 +51,16 @@ export class CardAddComponent implements OnInit {
   ngOnInit() {
     this.getKinds();   
     this.acRoute.params.subscribe((data : any)=>{
-    if(data && data.id){
-        this.apiService.get("cards/"+data.id).subscribe((data : Card)=>{
-          this.card = data;
-          this.filters.kind = this._.find(this.kinds, function(obj){return obj.id == data.kind_id}).name;
-        });
-    }
-    else
-    {
-        this.card = new Card();
-    }
+      if(data && data.id){
+          this.apiService.get("cards/"+data.id).subscribe((data : Card)=>{
+            this.card = data;
+            this.filters.kind = this._.find(this.kinds, function(obj){return obj.id == data.kind_id}).name;
+          });
+      }
+      else
+      {
+          this.card = new Card();
+      }
     }) 
   }
 

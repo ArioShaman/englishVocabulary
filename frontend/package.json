@@ -23,6 +23,7 @@
     "angular2-token": "^0.2.0-beta.14",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
+    "ng2-cache": "^0.2.1",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.0",
     "underscore": "^1.9.1",

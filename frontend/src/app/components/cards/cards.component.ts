@@ -10,6 +10,9 @@ import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
 import {Observable} from 'rxjs/Observable';
 import {  SharedService } from "../../services/shared.service";
 import { CardsService } from "../../services/cards.service";
+import { ActivatedRoute } from '@angular/router';
+import { DarkModeService } from "../../services/dark-mode.service";
+
 
 @Component({
   selector: 'app-cards',
@@ -51,13 +54,13 @@ export class CardsComponent implements OnInit {
   public cards : Array<Card>; 
   public kinds : Array<any>;
   public selectedCard: Card;
+  public darkMode:boolean;
   public filters = {kind: ''};
   public opened:boolean = false;
   public deleteId:number;
   public state = 'cards';
   public currentUser:any;
 
-  // @ViewChild(ModalComponent) modalComponent: ModalComponent;
 
   constructor(public apiService: ApiService,
    public router : Router,
@@ -66,27 +69,35 @@ export class CardsComponent implements OnInit {
     public authService:AuthService,
     public authTokenService:Angular2TokenService,
     public shared:SharedService,
-    public cardsService:CardsService
+    public cardsService:CardsService,
+    public acRoute : ActivatedRoute,
+    public darkModeService:DarkModeService
     ) {
-      this.authTokenService.init();
-    // console.log(navState);
+        this.darkModeService.darkModeChange.subscribe((value) => { 
+          this.darkMode = value; 
+        });    
+        this.authTokenService.init();            
   }
 
   
   ngOnInit() {
-    this.currentUser = this.authTokenService.currentUserData;
-    // console.log(this.currentUser);
-    this.apiService.get("cards")
-    .subscribe((data : Card[])=>{
-      for(let obj of data){
-        obj["state"] = 'inactive';
+    this.darkMode = this.darkModeService.get();
+    console.log(this.darkMode);
+    this.acRoute.params.subscribe((data : any)=>{
+      if(data && data.id){
+        this.apiService.get("vocs/"+data.id+"/cards")
+        .subscribe((data : Card[])=>{
+          for(let obj of data){
+            obj["state"] = 'inactive';
+          }
+          this.cards = data;
+          console.log(this.cards);
+          this.cardsService.insertData(this.cards);
+          this.shared.set(this.state);     
+        });             
       }
-      this.cards = data;
-      this.cardsService.insertData(this.cards);
-      this.shared.set(this.state);     
     });
     this.filters = this.cardsService.filters;
-    console.log(this.filters);
   }
 
   sayhello(){
@@ -141,10 +152,9 @@ export class CardsComponent implements OnInit {
   public disactive(actCard):void{
     var arr = this._.map(this.cards, function(card){
       if (card !== actCard){
-        card.state = 'inactive';
+      card.state = 'inactive';
       }
     });
-    // console.log(arr);
   }
 
   public update(id:string){
@@ -153,7 +163,6 @@ export class CardsComponent implements OnInit {
   }
 
   public onSelect(card: Card): void {
-    this.disactive(card);
     this.changeState(card);
     if(this.selectedCard !== card){
       this.selectedCard = card;
@@ -163,11 +172,12 @@ export class CardsComponent implements OnInit {
   }  
 
   public changeState(card: Card): void{
+    this.disactive(card);
     card.state = card.state === 'active' ? 'inactive' : 'active';
   }  
-  public kind(kind_id){
-    this.apiService.get("kinds/"+kind_id).subscribe((data: any)=>{
-      return data.name;
-    })  
-  }
+  // public kind(kind_id){
+  //   this.apiService.get("kinds/"+kind_id).subscribe((data: any)=>{
+  //     return data.name;
+  //   })  
+  // }
 }

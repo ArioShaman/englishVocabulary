@@ -7,17 +7,27 @@ $voc-body: #F3F3F3
 //DarkModeVars
 $darkGrey: #111111
 .dark-voc
+  // .vocs-body
+  background-color: black !important
   .vocs
     background-color: $darkGrey !important
+  .voc-content-block
+    background-color: $darkGrey !important
+  .name, .counts
+    color: white !important
 .vocs-body
   left: 0px
   // position: absolute
   height: auto
   width: 100%
   // background-color: grey
+  .empty
+    height: 35px
+    width: 100%
   .vocs
     background-color: $grey 
-    height: 900px
+    height: auto
+    min-height: 550px
     width: 90%
     border-radius: 10px
     margin: 0px auto

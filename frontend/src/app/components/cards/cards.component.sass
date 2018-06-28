@@ -1,6 +1,20 @@
 $grey: #DFDEDD
 $gray: #707070
 $darkred:  #973130
+
+$card-body: #F3F3F3
+
+$darkGrey: #111111
+.dark-card
+  .cards
+    background-color: $darkGrey !important
+  .card-body
+    background-color: $darkGrey !important
+  .name, .counts, .title 
+    color: white !important
+  .sentence
+    color: $grey !important
+
 modal
   .modal-open
     display: block !important
@@ -65,6 +79,9 @@ modal
         background-image: url('/assets/images/close-black.svg')  
         &:hover
           transform: scale(1.1,1.1)
+.empty
+  height: 35px
+  width: 100%   
 .content-container
   height: 100%
   width: 100%
@@ -131,39 +148,27 @@ modal
               background-color: #B5B5B5
 
   .cards-body
-    height: 100%
+    // height: auto
     width: 100%
     // width: calc(100% - 200px)
     // background-color: grey
-    .title
-      font-size: 30px
-      // margin: 20px auto
-      width: 98%
-      font-family: 'arial'
-      // text-align: left
-      margin: 0px auto
-      padding-left: 30px
-      margin-top: 20px
     .cards
+      min-height: 570px
       height: auto
-      width: 98%
+      width: 90%
       margin: 0px auto
-      // margin-left: 30px
-      margin-top: 10px
+      border-radius: 10px
+      background-color: $card-body 
+      margin-top: 30px
       display: flex
       flex-direction: row
       flex-wrap: wrap
-      .selected, .not-selected
-        // .card-content
-        //   visibility: visible
-        //   animation: hiding 1s
-        // @keyframes hiding
-        //   0%,90%
-        //     visibility: hidden
-        //   100%
-        //     visibility: visible
-        // transform: scale(1.1, 1.1)
-
+      .title
+        color: black
+        font-family: 'proxima-bold'
+        font-size: 25px
+        padding-top: 32px
+        margin-left: 80px     
 
   .update, .delete
     height: 20px
@@ -194,66 +199,134 @@ modal
       width: 60px
       background-size: cover
       background-image: url('/assets/images/plus.png')
-  .card
-    $card-h: 180px
-    background-color: $grey
-    transform-style: preserve-3d
-    transitin: 0.5s
-    position: relative
-    height: $card-h
-    width: 330px
-    display: inline-block
-    cursor: pointer
-    margin-top: 10px
-    margin-left: 20px
-    .clicked
-      position: relative
-      height: $card-h
-      margin-top: -15px
-      width: 100%
-      .content
-        position: absolute
-        top: 0px
-        height: $card-h
-        width: 100%
-        .angle-bar
-          // background-color: red
-          z-index: 200
-          height: 20px
-          width: auto
-          position: absolute
-        .right
-          right: 10px
-        .left
-          left: 10px 
-        .top
-          top: 25px
-        .bottom
-          bottom: 10px
 
-        .info-bar
-          z-index: 100
-          height: $card-h
-          // background-color: grey !important
-          .eng, .word
-            position: absolute
-            top: 50px
-            width: 250px
-            // background-color: grey
-            font-family: 'stolzl-med'
-            text-transform: uppercase
-            color: white
-            text-align: center
-            font-size: 25px
-          .rus, .rus-sentence
-            transform: rotateY(180deg)
-          .sentence,
-            position: absolute
-            width: 250px
-            color: white
-            font-family: 'stolzl-reg'
-            text-align: center
-            top: 90px
+  .cards-flex
+    width: calc(100% - 120px)
+    margin: 0px auto
+    margin-top: 15px
+    height: auto
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap      
+  .card
+    cursor: pointer
+    border-radius: 15px
+    height: 124px
+    width: 220px
+    margin-top: 20px
+    margin-left: 20px    
+    transition: 1s
+    // background: linear-gradient(to top right, #EF3131, #4E36E0 )
+    // clip-path: polygon( 0% 0%, 0% 100%, 100% 100%, 100% 0%)    
+    &:hover
+      transform: scale(1.1, 1.1)
+
+    .angle-bar
+      position: absolute
+      z-index: 999
+
+    .bottom
+      margin-top: 95px
+    .left
+      margin-left: 9px
+    .right
+      margin-left: 190px
+    .square 
+      height: 20px
+      width: 20px
+      background-color: grey 
+    .card-body
+      position absolute
+      position: absolute
+      margin: 4px
+      height: calc(124px - 8px)
+      background-color: $card-body
+      width: calc(220px - 8px)
+      border-radius: 12px           
+    .card-content-block
+      z-index: 100
+      position: absolute
+      margin: 4px
+      height: calc(124px - 8px)
+      // background-color: $card-body
+      width: calc(220px - 8px)
+      border-radius: 12px
+      .name
+        padding-top: 25px
+        font-family: 'proxima-light'
+        font-size: 22px
+        color: black
+        text-align: center
+        width: 180px
+        left: calc((212px - 180px)/2)
+        text-transform: uppercase
+        position: absolute
+      .sentence
+        padding-top: 55px
+        font-family: 'proxima-light'
+        font-size: 16px
+        color: $gray
+        text-align: center
+        width: 160px
+        left: calc((212px - 160px)/2)
+        text-transform: uppercase
+        position: absolute        
+      .rus 
+        transform: rotateY(180deg)
+      .counts
+        font-family: 'proxima-light'
+        font-size: 8px
+        color: black
+        text-align: center
+        line-height: 8px
+
+
+    // $card-h: 180px
+    // background-color: $grey
+    // transform-style: preserve-3d
+    // transitin: 0.5s
+    // position: relative
+    // height: $card-h
+    // width: 330px
+    // display: inline-block
+    // cursor: pointer
+    // margin-top: 10px
+    // margin-left: 20px
+    // .clicked
+    //   position: relative
+    //   height: $card-h
+    //   margin-top: -15px
+    //   width: 100%
+    //   .content
+    //     position: absolute
+    //     top: 0px
+    //     height: $card-h
+    //     width: 100%
+
+
+    //     .info-bar
+    //       z-index: 100
+    //       height: $card-h
+    //       // background-color: grey !important
+    //       .eng, .word
+    //         position: absolute
+    //         top: 50px
+    //         width: 250px
+    //         // background-color: grey
+    //         font-family: 'stolzl-med'
+    //         text-transform: uppercase
+    //         color: white
+    //         text-align: center
+    //         font-size: 25px
+    //       .rus, .rus-sentence
+    //         transform: rotateY(180deg)
+    //       .sentence,
+    //         position: absolute
+    //         width: 250px
+    //         color: white
+    //         font-family: 'stolzl-reg'
+    //         text-align: center
+    //         top: 90px
       .kind
         margin-top: 5px
         padding: 2px 15px
@@ -263,3 +336,32 @@ modal
         border: 1px solid white
         border-radius: 2px
         font-family: 'stolzl-reg'
+
+
+.grad01
+  background: linear-gradient(to top right, #EF3131, #4E36E0)
+  &:hover
+   background: linear-gradient(to bottom left, #EF3131, #4E36E0 )          
+.grad02
+  background: linear-gradient(to top right, #39E036, #EFD031)
+  &:hover
+.grad03
+  background: linear-gradient(to top right, #31E3EF, #B436E0)
+  &:hover
+    background: linear-gradient(to bottom left, #31E3EF, #B436E0)
+.grad04
+  background: linear-gradient(to top right, #EFE731, #E03636)
+  &:hover
+    background: linear-gradient(to bottom left, #EFE731, #E03636)
+.grad05
+  background: linear-gradient(to top right, #EF8C31, #36E047)
+  &:hover
+    background: linear-gradient(to bottom left, #EF8C31, #36E047)
+.grad06
+  background: linear-gradient(to top right, #36ADE0, #31EF9F)
+  &:hover
+    background: linear-gradient(to bottom left, #36ADE0, #31EF9F)
+.grad07
+  background: linear-gradient(to top right, #EF8C31, #E92B7B)
+  &:hover
+    background: linear-gradient(to bottom left, #EF8C31, #E92B7B)        

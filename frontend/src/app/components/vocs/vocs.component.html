@@ -18,13 +18,17 @@
           <a [routerLink]="['/vocs/'+voc.id+'/cards']" >
             <div class="voc-content-block">
               <div class="name">{{voc.name}}</div>
-              <div class="counts">69 words</div>
+              <div class="counts">{{voc.cards_count}} words</div>
             </div>
           </a>
 
         </div>
 
       </div>
+
+      <div class="empty"></div>
     </div>
+
   </div>
+  <div class="empty"></div>
 </div>

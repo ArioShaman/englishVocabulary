@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Subject } from "rxjs/Subject";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-    myGlobalVar:string;
+    public myGlobalVar:string;
+    public varChange:Subject<string> = new Subject<string>();
 
     constructor(){
       this.myGlobalVar = 'main';
-      // console.log(this.myGlobalVar);
-      // alert("My intial global variable value is: " + this.myGlobalVar);
     }
 
     set(val: string){
       this.myGlobalVar = val;
+      this.varChange.next(this.myGlobalVar);
     }
 
     get(){

@@ -1,16 +1,24 @@
 <div class="picker">
   <div class="color-picker"
     (click)="changeState()"
-    [style.background-color]="selectedColor"
+    [ngClass]="selectedColor"
   >
   </div>                  
   <div class="colors-line"
     [@colorsState]="colorsState"
+    [ngClass]="[
+      colorState == 'grad01' ? 'grad01':'',
+      colorState == 'grad02' ? 'grad02':'',
+      colorState == 'grad03' ? 'grad03':'',
+      colorState == 'grad04' ? 'grad04':'',
+      colorState == 'grad05' ? 'grad05':'',
+      colorState == 'grad06' ? 'grad06':'',
+      colorState == 'grad07' ? 'grad07':''
+    ]"    
   >
     <div *ngFor="let color of colors">
-      <div class="color"
+      <div class="color grad {{color}}"
         (click)="selectColor(color)"
-        [style.background-color]=color
       ></div>
     </div>
   </div>

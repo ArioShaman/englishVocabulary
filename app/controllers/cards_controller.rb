@@ -2,13 +2,11 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :update, :destroy]
   # before_action :authenticate_user!
 
-  # GET /cars
   def index
-    @cards = Card.all.order('created_at desc')
+    @cards = Voc.find(params[:voc_id]).cards.order('created_at desc')
     return @cards
   end
 
-  # GET /cars/1
   def show
     render json: @card
   end
@@ -41,7 +39,7 @@ class CardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
-      @card = Card.find(params[:id])
+      @card = Voc.find(params[:voc_id]).cards.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -1,8 +1,5 @@
 <div class="navbar" [ngClass]="darkMode  ? 'dark-nav':''">
-  <div class="link main"></div>
-<!--   <a routerLink="/cards">
-    <div class="link">Cards</div>
-  </a> -->
+  <div class="link main" [routerLink]="['/']"></div>
 
   <div class="side-panel" [ngClass]="navState == 'active'? 'nav-open':'nav-close'">
     <div class="icon" [ngClass]="navState == 'active'? 'close':'humburger'" (click)="openMenu()"></div>
@@ -15,15 +12,15 @@
 
 <div class="body" [ngClass]="darkMode  ? 'dark-body':''">
   <div id="content">
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 
   <div class="sidebar" [ngClass]="[navState == 'active'? 'side-open':'side-close', darkMode  ? 'dark-mode':'']">
     <div class="content" [ngClass]="navState == 'active'? 'side-open':'side-close'">
       <div class="buttons">
 
-        <cards-bar *ngIf="state == 'cards'"></cards-bar>  
-        <vocs-bar *ngIf="state == 'vocs'"></vocs-bar>    
+      <cards-bar [hidden]="state != 'cards'"></cards-bar> 
+      <vocs-bar [hidden]="state != 'vocs'"></vocs-bar>  
 
       </div>
       <div class="default-bar">

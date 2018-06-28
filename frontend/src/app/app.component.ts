@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 import { CardsComponent } from './components/cards/cards.component';
 import { SharedService } from "./services/shared.service";
 import { DarkModeService } from "./services/dark-mode.service";
+import { CacheService, CacheStoragesEnum } from 'ng2-cache';
 
 @Component({
   selector: 'app-root',
@@ -22,30 +23,35 @@ export class AppComponent {
   constructor(@Inject('navState') public navState:string,
       private authToken: Angular2TokenService,
       public shared:SharedService,
-      public darkModeService:DarkModeService) {
+      public darkModeService:DarkModeService,
+      private cache: CacheService) {
         this.authToken.init(environment.token_auth_config);
         this.darkModeService.darkModeChange.subscribe((value) => { 
           this.darkMode = value; 
-        });    
-  }
-
-  onActivate(componentRef){
-    // console.log(componentRef.test);
+        }); 
+        this.shared.varChange .subscribe((value) => {
+          this.state = value;
+        }); 
+        if(this.cache.get('navState')){
+          this.navState = this.cache.get('navState');
+        }else{
+          this.navState = 'inactive';
+          this.cache.set('navState', 'inactive');
+        }
   }
 
   ngOnInit() {
-    console.log(this.darkMode);
     setTimeout(()=> {
-       // console.log(this.shared); 
       this.darkMode = this.darkModeService.get();
       this.state = this.shared.get();
-       // console.log(this.state);
-      },700); 
-    }     
+    },700); 
+   }     
 
 
   public openMenu():void{
     this.navState = this.navState === 'active' ? 'inactive' : 'active';
+    this.cache.set('navState', this.navState);
+    console.log(this.cache.get('navState'));
   }
   public Settings():void{
     this.settings = this.settings === 'active' ? 'inactive' : 'active';;

@@ -14,29 +14,76 @@
     </div>  
   </modal>
 
-  <div class="cards-body">
-    <div class="title">You can choose word</div>
+  <div class="cards-body" [ngClass]="darkMode  ? 'dark-card':''">
 
     <div class="cards"> 
+      <div class="title">You can choose word</div>
+  
+      <div class="cards-flex">
+        <div *ngFor="let card of cards | myFilter:filters">
+          <div class="card"
+            [ngClass]="[
+              card.colorHash == 'grad01' ? 'grad01':'',
+              card.colorHash == 'grad02' ? 'grad02':'',
+              card.colorHash == 'grad03' ? 'grad03':'',
+              card.colorHash == 'grad04' ? 'grad04':'',
+              card.colorHash == 'grad05' ? 'grad05':'',
+              card.colorHash == 'grad06' ? 'grad06':'',
+              card.colorHash == 'grad07' ? 'grad07':''
+              ]"
+            >
+            <div class="card-body"></div>
+
+            <div class="angle-bar bottom left">
+              <color-picker [childData]="card" ></color-picker>              
+            </div>
+
+            <a [routerLink]="" >
+              <div class="card-content-block"
+                [@cardState]="card.state"
+                (click)="changeState(card)"
+              >
+                <div class="name eng"
+                  [style.visibility]="card.state == 'active' ? 'hidden':'visible'">
+                  {{card.eng}}
+                </div>
+                <div class="name rus"
+                  [style.visibility]="card.state == 'active' ? 'visible':'hidden'"
+                >
+                  {{card.rus}}
+                </div>
+
+                <div class="sentence eng"
+                  [style.visibility]="card.state == 'active' ? 'hidden':'visible'"
+                >
+                  {{card.engSentence}}
+                </div>
+
+                <div class="sentence rus"
+                  [style.visibility]="card.state == 'active' ? 'visible':'hidden'"
+                >
+                  {{card.rusSentence}}
+                </div>
+
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+      <div class="empty"></div>
 
 <!--       <a routerLink="/cards/add" class="card link">
         <div class="plus"></div>
       </a> -->
 
-<!--       <div *ngFor="let card of cards | myFilter:filters">
-        <div class="card"  
-          [class.selected]="card === selectedCard"
-          [style.background-color]="card['colorHash']">
-
-
-          <div class="clicked">
+<!--  <div class="clicked">
             <div class="content">
               <div class="angle-bar top left">
 
                 <a [routerLink]="['/cards/add', card['id']]" class="update">
                 </a>     
               </div>
-
               <div class="angle-bar top right">
                 <div class="delete"
                   (click)="delete(card['id'])"
@@ -47,44 +94,16 @@
                   {{card['kind']}}
                 </div> 
               </div>
-
               <div class="angle-bar bottom left">
                 <div *ngIf='card'>
                   <app-color-picker [childData]="card" ></app-color-picker>
                 </div>    
               </div>          
-
-              <dir class="info-bar" (click)="onSelect(card)" [@cardState]="card.state">
-                <div class="eng word card-content"
-                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
-                >
-                  {{card['eng']}}
-                </div>
-                <div class="rus word card-content"
-                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
-                >
-                  {{card['rus']}}
-                </div>
-                <div class="sentence eng-sentence card-content"
-                  [style.visibility]="card === selectedCard ? 'hidden': 'visible'"
-                >
-                  {{card['engSentence']}}
-                  </div>
-
-                <div class="sentence rus-sentence card-content"
-                  [style.visibility]="card === selectedCard ? 'visible' : 'hidden'"
-                >
-                  {{card['rusSentence']}}
-                </div>
-                
-              </dir>
             </div>
-          </div>
-
-        </div>
-
       </div> -->
     </div>
+
+    <div class="empty"></div>
     
   </div>
 </div>

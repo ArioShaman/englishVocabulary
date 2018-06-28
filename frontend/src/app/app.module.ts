@@ -32,6 +32,7 @@ import { UpperSideBarComponent } from './components/upper-side-bar/upper-side-ba
 import { DarkModeService } from "./services/dark-mode.service";
 // import { ModalDirective } from './directives/modal.directive';
 
+import { Ng2CacheModule } from 'ng2-cache';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DarkModeService } from "./services/dark-mode.service";
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    Ng2CacheModule,
     HttpClientModule,
     HttpModule,
     RouterModule.forRoot([

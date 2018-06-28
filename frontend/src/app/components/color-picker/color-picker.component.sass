@@ -1,12 +1,13 @@
 .picker
+  top: -7px
   position: absolute
-  left: 10px
+  left: 0px
   display: flex
   flex-direction: row
   width: auto
   .colors-line
     clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)
-    margin-left: 20px
+    margin-left: 17px
     position: relative
     height: 35px
     // width: 0px
@@ -16,11 +17,11 @@
       border-box: box-sizing
       position: relative
       cursor: pointer
-      height: 20px
-      width: 20px            
+      height: 15px
+      width: 15px            
       border-radius: 50%
-      border: 2px solid grey
-      margin-left: 7px
+      border: 1px solid grey
+      margin-left: 4px
       transition: 0.5s
       top: 10px
       &:hover
@@ -30,17 +31,47 @@
     border-box: box-sizing
     position: absolute
     cursor: pointer
-    height: 20px
-    width: 20px
+    height: 15px
+    width: 15px
     background-color: white
     border-radius: 50%
-    border: 2px solid grey
+    border: 1px solid grey
     &:hover
       animation: bounce 0.5s
     @keyframes bounce
       0%
         transform: translateY(0px)
       50%
-        transform: translateY(-10px)
+        transform: translateY(-5px)
       100%
         transform: translateY(0px)
+
+.grad
+  transition: 0.5s
+.grad01
+  background: linear-gradient(to top right, #EF3131, #4E36E0)
+  &:hover
+   background: linear-gradient(to bottom left, #EF3131, #4E36E0 )          
+.grad02
+  background: linear-gradient(to top right, #39E036, #EFD031)
+  &:hover
+.grad03
+  background: linear-gradient(to top right, #31E3EF, #B436E0)
+  &:hover
+    background: linear-gradient(to bottom left, #31E3EF, #B436E0)
+.grad04
+  background: linear-gradient(to top right, #EFE731, #E03636)
+  &:hover
+    background: linear-gradient(to bottom left, #EFE731, #E03636)
+.grad05
+  background: linear-gradient(to top right, #EF8C31, #36E047)
+  &:hover
+    background: linear-gradient(to bottom left, #EF8C31, #36E047)
+.grad06
+  background: linear-gradient(to top right, #36ADE0, #31EF9F)
+  &:hover
+    background: linear-gradient(to bottom left, #36ADE0, #31EF9F)
+.grad07
+  background: linear-gradient(to top right, #EF8C31, #E92B7B)
+  &:hover
+    background: linear-gradient(to bottom left, #EF8C31, #E92B7B)        

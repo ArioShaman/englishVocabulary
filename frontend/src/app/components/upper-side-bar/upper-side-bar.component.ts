@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 import { DarkModeService } from "../../services/dark-mode.service";
+import {Angular2TokenService} from "angular2-token";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'upper-side-bar',
@@ -22,7 +25,12 @@ export class UpperSideBarComponent implements OnInit {
   @Input() public Settings;
   darkMode:boolean;
 
-  constructor(public darkModeService:DarkModeService) { 
+  constructor(
+    public darkModeService:DarkModeService,
+    private tokenAuthSerivce:Angular2TokenService,
+    public authService:AuthService,
+    private router:Router    
+  ) { 
     this.darkMode = this.darkModeService.darkMode;
     this.darkModeService.darkModeChange.subscribe((value) => { 
       this.darkMode = value; 
@@ -38,4 +46,8 @@ export class UpperSideBarComponent implements OnInit {
     this.darkModeService.changeMode();
   }
 
+  public logOut(){
+    console.log('click');
+    this.authService.logOutUser().subscribe(() => console.log('LogOut'));
+  }
 }

@@ -97,16 +97,17 @@ $darkGrey: #111111
   width: 100%
   transition: width 0.5s
 .dark-body
-  background-color: black
+  background-color: black !important
 .body
+  z-index: 0
   position: absolute
-  height: calc(100% - 50px)
+  height: auto
   width: 100%
   margin-top: 50px
   display: flex
   flex-direction: row
   flex-wrap: no-wrap  
-.side-open
+.side-open  
   width: 250px
   min-width: 250px
   max-width: 250px
@@ -115,12 +116,15 @@ $darkGrey: #111111
   min-width: 50px
   max-width: 50px
 .dark-mode
-  background-color: $darkGrey
+  background-color: grey !important
   .length
     color: white !important
   .setting
     background-image: url('/assets/images/settings-white.svg') !important    
+  .content
+    background-color: $darkGrey !important
 .sidebar
+  // z-index: 999 !important
   transition: linear 0.5s
   height: 100%
   .content

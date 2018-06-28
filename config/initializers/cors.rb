@@ -16,6 +16,7 @@
 #   end
 # end
 
+Rails.application.config.middleware.use ActionDispatch::Cookies
 Rails.application.config.middleware.use Rack::Cors do
   allow do
     origins '*'

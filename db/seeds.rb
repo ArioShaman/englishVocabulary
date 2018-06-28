@@ -18,10 +18,10 @@
 
 # User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "password")
 
-Voc.find(1).update!(color: 'grad01')
-Voc.find(2).update!(color: 'grad02')
-Voc.find(3).update!(color: 'grad03')
-Voc.find(4).update!(color: 'grad04')
-Voc.find(5).update!(color: 'grad05')
-Voc.find(6).update!(color: 'grad06')
-Voc.find(7).update!(color: 'grad07')
+# Voc.find(1).update!(color: 'grad01')
+# Voc.find(2).update!(color: 'grad02')
+# Voc.find(3).update!(color: 'grad03')
+# Voc.find(4).update!(color: 'grad04')
+# Voc.find(5).update!(color: 'grad05')
+# Voc.find(6).update!(color: 'grad06')
+# Voc.find(7).update!(color: 'grad07')
