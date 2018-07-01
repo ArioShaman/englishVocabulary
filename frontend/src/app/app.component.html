@@ -1,5 +1,9 @@
 <div class="navbar" [ngClass]="darkMode  ? 'dark-nav':''">
   <div class="link main" [routerLink]="['/']"></div>
+  
+<!--   <div *ngIf="authToken.currentUserData">
+    <div>{{authToken.currentUserData.name}}</div>
+  </div> -->
 
   <div class="side-panel" [ngClass]="navState == 'active'? 'nav-open':'nav-close'">
     <div class="icon" [ngClass]="navState == 'active'? 'close':'humburger'" (click)="openMenu()"></div>

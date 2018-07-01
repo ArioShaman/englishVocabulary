@@ -1,14 +1,22 @@
 <div class="bar" [@Settings]="Settings" [ngClass]="darkMode  ? 'dark-mode':''">
   <div class="buttons">
+    
+    <div *ngIf="tokenAuthSerivce.currentUserData" class="button">
+      <div class="icon"></div>
+      <div class="length" (click)="profile()">Profile</div>
+    </div>
+
     <div class="button">
       <div class="icon"></div>
       <div class="length" (click)="changeMode()">Night Mode</div>
     </div> 
 
-    <div class="button">
+    <div *ngIf="tokenAuthSerivce.currentUserData" class="button">
       <div class="icon"></div>
       <div class="length" (click)="logOut()">Logout</div>
     </div>
+
+
 
   </div>
 </div>

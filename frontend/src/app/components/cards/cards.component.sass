@@ -207,7 +207,8 @@ modal
     height: auto
     display: flex
     flex-direction: row
-    flex-wrap: wrap      
+    flex-wrap: wrap  
+    position: relative    
   .card
     cursor: pointer
     border-radius: 15px
@@ -216,6 +217,7 @@ modal
     margin-top: 20px
     margin-left: 20px    
     transition: 1s
+    position: relative
     // background: linear-gradient(to top right, #EF3131, #4E36E0 )
     // clip-path: polygon( 0% 0%, 0% 100%, 100% 100%, 100% 0%)    
     &:hover
@@ -225,12 +227,19 @@ modal
       position: absolute
       z-index: 999
 
+    .filter
+      font-size: 16px
+      color: white
+      font-family: 'proxima-light'
+      transition: 0.5s
+      &:hover
+        transform: scale(1.05, 1.05)
     .bottom
       margin-top: 95px
     .left
-      margin-left: 9px
+      left: 9px
     .right
-      margin-left: 190px
+      right: 9px
     .square 
       height: 20px
       width: 20px

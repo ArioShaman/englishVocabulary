@@ -43,13 +43,17 @@ export class ColorPickerComponent implements OnInit {
 
     this.childData.colorHash = color;
     this.selectedColor = color;
-    this.apiService.update("vocs/"+1+"/cards/"+this.childData.id  ,this.childData).subscribe((r)=>{
-      this.selectedColor = color;
-    })    
+    this.acRoute.params.subscribe((data : any)=>{
+      this.apiService.update("vocs/"+data.id+"/cards/"+this.childData.id  ,this.childData).subscribe((r)=>{
+        this.selectedColor = color;
+      })    
+    });
   }
 
   public changeState(): void{
     this.colorsState = this.colorsState === 'active' ? 'inactive' : 'active';
   }  
-
+  public disableState():void{
+    this.colorsState = 'inactive';
+  }
 }

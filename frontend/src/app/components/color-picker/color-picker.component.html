@@ -1,4 +1,4 @@
-<div class="picker">
+<div class="picker" (mouseleave)="disableState()">
   <div class="color-picker"
     (click)="changeState()"
     [ngClass]="selectedColor"

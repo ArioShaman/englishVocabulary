@@ -29,6 +29,8 @@ export class LoginFormComponent implements OnInit {
           if(res.status == 200){
             this.onFormResult.emit({signedIn: true, res});
           }
+          console.log('auth response headers: ', res.headers.toJSON()); 
+          console.log('auth response body:', res.json());
         },
 
         err => {

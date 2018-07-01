@@ -37,6 +37,12 @@
             <div class="angle-bar bottom left">
               <color-picker [childData]="card" ></color-picker>              
             </div>
+            
+            <div class="angle-bar bottom right">
+              <div class="filter"
+                (click)="onFilter(card.kind)"
+              >{{card.kind}}</div>
+            </div>
 
             <a [routerLink]="" >
               <div class="card-content-block"

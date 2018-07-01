@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit, Input, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
+
 import {Angular2TokenService} from "angular2-token";
+import {AuthService} from "./services/auth.service";
+
 import {environment} from "../environments/environment";
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
@@ -21,11 +24,13 @@ export class AppComponent {
   public darkMode:boolean;
 
   constructor(@Inject('navState') public navState:string,
-      private authToken: Angular2TokenService,
+      // public authService: AuthService,
+      public authToken: Angular2TokenService,
       public shared:SharedService,
       public darkModeService:DarkModeService,
       private cache: CacheService) {
         this.authToken.init(environment.token_auth_config);
+        // console.log(this.authToken.currentUserData);
         this.darkModeService.darkModeChange.subscribe((value) => { 
           this.darkMode = value; 
         }); 

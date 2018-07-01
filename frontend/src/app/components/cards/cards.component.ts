@@ -75,14 +75,16 @@ export class CardsComponent implements OnInit {
     ) {
         this.darkModeService.darkModeChange.subscribe((value) => { 
           this.darkMode = value; 
-        });    
-        this.authTokenService.init();            
+        });   
+        this.cardsService.cardChange.subscribe((value) => {
+          this.cards = value;
+        });          
+        // this.authTokenService.init();            
   }
 
   
   ngOnInit() {
     this.darkMode = this.darkModeService.get();
-    console.log(this.darkMode);
     this.acRoute.params.subscribe((data : any)=>{
       if(data && data.id){
         this.apiService.get("vocs/"+data.id+"/cards")
@@ -91,9 +93,10 @@ export class CardsComponent implements OnInit {
             obj["state"] = 'inactive';
           }
           this.cards = data;
-          console.log(this.cards);
+          // console.log(this.cards);
           this.cardsService.insertData(this.cards);
-          this.shared.set(this.state);     
+          this.shared.set(this.state);
+          // this.cardsService.getCards();
         });             
       }
     });
@@ -104,9 +107,9 @@ export class CardsComponent implements OnInit {
     console.log('hello!!');
   }
 
-  public logOut(){
-    this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
-  }
+  // public logOut(){
+  //   this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
+  // }
 
   public open(){
     this.opened = true;
@@ -125,9 +128,7 @@ export class CardsComponent implements OnInit {
   //   // console.log(this.authTokenService.currentUserData[);
   //   this.filters.kind = ''; 
   // }
-  public shuffle():void{
-    this.cards = this._.shuffle(this.cards);
-  }
+
   public destroy(id:number){
     var path = 'cards/' + id;
     this.apiService.delete(path).subscribe((r)=>{
@@ -157,11 +158,6 @@ export class CardsComponent implements OnInit {
     });
   }
 
-  public update(id:string){
-    console.log("update : " + id );
-    this.router.navigateByUrl('/products/add/' + id);
-  }
-
   public onSelect(card: Card): void {
     this.changeState(card);
     if(this.selectedCard !== card){
@@ -174,10 +170,5 @@ export class CardsComponent implements OnInit {
   public changeState(card: Card): void{
     this.disactive(card);
     card.state = card.state === 'active' ? 'inactive' : 'active';
-  }  
-  // public kind(kind_id){
-  //   this.apiService.get("kinds/"+kind_id).subscribe((data: any)=>{
-  //     return data.name;
-  //   })  
-  // }
+  } 
 }

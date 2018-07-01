@@ -42,12 +42,16 @@ export class UpperSideBarComponent implements OnInit {
   }
 
 
+  public profile(){
+    console.log(this.tokenAuthSerivce.currentUserData);
+  }
+
   public changeMode(){
     this.darkModeService.changeMode();
   }
 
   public logOut(){
-    console.log('click');
-    this.authService.logOutUser().subscribe(() => console.log('LogOut'));
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
+
   }
 }

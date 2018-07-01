@@ -63,7 +63,7 @@ import { Ng2CacheModule } from 'ng2-cache';
       { 
         path: '',   
         redirectTo: '/vocs', 
-        pathMatch: 'full' },      
+        pathMatch: 'full',      
       {
         path: 'vocs/:id/cards',
         component: CardsComponent

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card';
 import { ApiService } from '../api.service';
+import { HelperService } from '../services/helper.service';
+import { Subject } from "rxjs/Subject";
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +11,17 @@ export class CardsService {
 
   public cards : Array<Card>;   
   public filters = {kind: ''};
+  public cardChange:Subject<Array<Card>> = new Subject<Array<Card>>(); 
+  constructor(public _: HelperService) { }
 
-  constructor() { }
-
-  insertData(cards){
+  public insertData(cards){
+    this.cardChange.next(cards);
     this.cards = cards;
     // console.log(this.cards);
+  }
+
+  public getCards(){
+    return this.cards;
   }
 
   setFilter(kind){
