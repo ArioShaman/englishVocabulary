@@ -33,15 +33,6 @@ export class VocsComponent implements OnInit {
     this.shared.set(this.state);   
     this.currentUser = this.authTokenService.currentUserData;
 
-    // this.apiService.get("vocs")
-    // .subscribe((data : Array<any>)=>{
-    //   for(let obj of data){
-    //     obj["state"] = 'inactive';
-    //   }
-    //   this.vocs = data;
-    //   console.log(this.vocs);
-    //   // this.shared.set(this.state);     
-    // }); 
     this.authTokenService.get('vocs.json').map(res => res.json()).subscribe(
         res =>{
           for(let obj of res){
@@ -49,6 +40,7 @@ export class VocsComponent implements OnInit {
           }
           this.vocs = res;
           console.log(this.vocs);
+          // this.shared.set(this.state);     
         },
         error => {
            this.router.navigate(['/auth'])

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   # resources :cards
   resources :kinds
-  resources :vocs do
+  resources :vocs, only: [:index, :create] do
     resources :cards
   end
   resources :cards, only: [:update]

@@ -1,0 +1,30 @@
+<div class="vocs-body" [ngClass]="darkMode  ? 'dark-voc':''">
+  <div class="vocs">
+    <div class="title">You can create your personal Voc</div>
+    
+    <div class="form">
+      <div class="form-group">
+        <div class="subtitle">Voc name:</div>
+
+        <div class="input">
+          <input type="text" required name="name" autocomplete="off" 
+          [(ngModel)]="voc.name">
+          <div class="line-cont">
+            <div class="color-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm" (click)="onSubmit()">
+        <div class="text">
+          Create
+        </div>
+        <div class="body">
+          <div class="body-text">Create</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="empty">
+</div>

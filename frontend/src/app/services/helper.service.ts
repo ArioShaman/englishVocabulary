@@ -26,4 +26,7 @@ export class HelperService {
   public pluck(list, propertyName){
     return _.pluck(list, propertyName);
   } 
+  public sample(list){
+    return _.sample(list); 
+  }
 }

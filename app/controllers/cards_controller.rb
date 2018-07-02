@@ -3,8 +3,14 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @cards = Voc.find(params[:voc_id]).cards.order('created_at desc')
-    return @cards
+    @voc = Voc.find(params[:voc_id])
+    list = @voc.users
+    if list.include?(current_user)
+      @cards = @voc.cards.order('created_at desc')
+      return @cards
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
   end
 
   def show

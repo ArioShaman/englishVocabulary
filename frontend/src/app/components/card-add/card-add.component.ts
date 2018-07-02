@@ -78,10 +78,10 @@ export class CardAddComponent implements OnInit {
         // console.log(selected);
         var obj = this._.find(this.kinds, function(obj){return obj.name == selected});
         this.card.kind_id = obj.id; 
-        if(this.card.id){
-        this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
-          window.location.href = '/';
-        })
+          if(this.card.id){
+          this.apiService.update("cards/"+this.card.id, this.card).subscribe((r)=>{
+            window.location.href = '/';
+          })
         }
         else
           this.apiService.post("cards",this.card).subscribe((r)=>{

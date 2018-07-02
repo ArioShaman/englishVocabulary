@@ -87,19 +87,36 @@ export class CardsComponent implements OnInit {
     this.darkMode = this.darkModeService.get();
     this.acRoute.params.subscribe((data : any)=>{
       if(data && data.id){
-        this.apiService.get("vocs/"+data.id+"/cards")
-        .subscribe((data : Card[])=>{
-          for(let obj of data){
-            obj["state"] = 'inactive';
-          }
-          this.cards = data;
-          // console.log(this.cards);
-          this.cardsService.insertData(this.cards);
-          this.shared.set(this.state);
-          // this.cardsService.getCards();
-        });             
+        // this.apiService.get("vocs/"+data.id+"/cards")
+        // .subscribe((data : Card[])=>{
+        //   for(let obj of data){
+        //     obj["state"] = 'inactive';
+        //   }
+        //   this.cards = data;
+        //   // console.log(this.cards);
+        //   this.cardsService.insertData(this.cards);
+        //   this.shared.set(this.state);
+        //   // this.cardsService.getCards();
+        // });   
+        this.authTokenService.get("vocs/"+data.id+"/cards").map(res => res.json()).subscribe(
+            res =>{
+              for(let obj of res){
+                obj["state"] = 'inactive';
+              }
+              this.cards = res;
+              // console.log(this.cards);
+              this.cardsService.insertData(this.cards);
+              this.shared.set(this.state);
+              // this.cardsService.getCards();   
+            },
+            error => {
+               this.router.navigate(['/auth'])
+            }
+        );                    
       }
     });
+
+
     this.filters = this.cardsService.filters;
   }
 

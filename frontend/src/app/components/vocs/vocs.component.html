@@ -3,6 +3,15 @@
     <div class="title">All vocs</div>
 
     <div class="vocs-flex">
+
+      <div class="voc newvoc">
+        <a [routerLink]="['/vocs/add']" >
+          <div class="voc-content-block">
+            <div class="new-icon"></div>
+          </div>
+        </a>
+      </div>
+
       <div *ngFor="let voc of vocs">
         <div class="voc"
           [ngClass]="[

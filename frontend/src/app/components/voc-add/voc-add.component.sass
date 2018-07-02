@@ -1,0 +1,124 @@
+$grey: #F3F3F3
+$gray: #707070
+$darkred:  #973130
+
+$voc-body: #F3F3F3
+
+//DarkModeVars
+$darkGrey: #111111
+.dark-voc
+  // .vocs-body
+  background-color: black !important
+  .vocs, .body
+    background-color: $darkGrey !important
+    .title, .subtitle
+      color: white !important
+.vocs-body
+  left: 0px
+  // position: absolute
+  height: auto
+  width: 100%
+  // background-color: grey
+  .empty
+    height: 35px
+    width: 100%
+  .vocs
+    background-color: $grey 
+    height: auto
+    min-height: 630px
+    width: 90%
+    border-radius: 10px
+    margin: 0px auto
+    margin-top: 50px 
+    .title
+      color: black
+      font-family: 'proxima-bold'
+      font-size: 25px
+      padding-top: 32px
+      margin-left: 67px    
+    .subtitle
+      color: $gray
+      font-family: 'proxima-reg'
+      font-size: 18px         
+    .form
+      min-height: 100px
+      height: auto
+      // background-color:  grey
+      width: calc(100% - (67px*2))
+      margin-left: 67px
+      margin-top: 50px
+      .form-group
+        height: 80px
+        width: 300px
+        // background-color: $gray
+        .input:hover
+          .line-cont
+            .color-line
+              width: 100%
+        .input
+          input
+            color: white
+            font-family: 'proxima-light'
+            background: none
+            height: 25px
+            margin-top: 5px
+            width: 100%
+            border: 0px solid grey
+            font-size: 16px
+            // padding-left: 15px
+            padding-top: 5px
+            &:focus, &:hover
+              outline: none
+          .line-cont
+            margin-top: 0px
+            height: 3px
+            width: 100%
+            background-color: white
+            &:hover
+              .color-line
+                width: 100% !important
+            .color-line
+              transition: 0.5s
+              // float: right
+              height: 3px 
+              width: 0%
+              background: linear-gradient(to top right, #31E3EF, #B436E0)
+
+      .confirm
+        height: 35px
+        width: 150px
+        background-color: $gray
+        margin-top: 40px
+        border-radius: 5px
+        background: linear-gradient(to top right, #31E3EF, #B436E0)
+        cursor: pointer
+        &:hover
+          .body
+            clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+        .text
+          position: absolute
+          font-size: 18px
+          font-family: 'proxima-reg'
+          text-align: center
+          color: white
+          padding-top: 7px
+          width: 150px
+        .body
+          transition: 0.5s
+          position: relative
+          border-radius: 4px
+          float: right
+          margin-right: 3px
+          height: 31px
+          width: 144px
+          background-color: $grey
+          margin-top: 2px
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+          .body-text
+            position: fixed
+            width: 144px
+            color: #B436E0
+            text-align: center
+            font-size: 18px
+            font-family: 'proxima-reg'
+            padding-top: 5px

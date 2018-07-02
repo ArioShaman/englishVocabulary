@@ -33,6 +33,7 @@ import { DarkModeService } from "./services/dark-mode.service";
 // import { ModalDirective } from './directives/modal.directive';
 
 import { Ng2CacheModule } from 'ng2-cache';
+import { VocAddComponent } from './components/voc-add/voc-add.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { Ng2CacheModule } from 'ng2-cache';
     VocsComponent,
     VocsBarComponent,
     UpperSideBarComponent,
+    VocAddComponent,
     // ModalDirective,
   ],
   imports: [
@@ -64,6 +66,7 @@ import { Ng2CacheModule } from 'ng2-cache';
         path: '',   
         redirectTo: '/vocs', 
         pathMatch: 'full',      
+      },
       {
         path: 'vocs/:id/cards',
         component: CardsComponent
@@ -73,13 +76,17 @@ import { Ng2CacheModule } from 'ng2-cache';
         component: VocsComponent
       },      
       {
-        path: 'cards/add',
+        path: 'vocs/:voc-id/cards/add',
         component: CardAddComponent
       },  
       {
-        path: 'cards/add/:id',
+        path: 'vocs/:voc-id/cards/add/:id',
         component: CardAddComponent
       },  
+      {
+        path: 'vocs/add',
+        component: VocAddComponent
+      },        
       {
         path: 'auth',
         component: AuthDialogComponent
