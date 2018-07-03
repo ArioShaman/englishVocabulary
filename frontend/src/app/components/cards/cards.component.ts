@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 
 //Services
 import { HelperService } from '../../services/helper.service';
-import {  AuthService } from "../../services/auth.service";
-import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
-import {  SharedService } from "../../services/shared.service";
+import { AuthService } from "../../services/auth.service";
+import { Angular2TokenService, AuthData, UserData } from "angular2-token";
+import { SharedService } from "../../services/shared.service";
 import { DarkModeService } from "../../services/dark-mode.service";
 import { CardsService } from "../../services/cards.service";
 import { CardDestroyService } from "../../services/card-destroy.service";

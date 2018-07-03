@@ -1,5 +1,6 @@
 class KindsController < ApplicationController
   before_action :set_kind, only: [:show]
+  # before_action :authenticate_user!
 
   def index
     @kinds = Kind.all

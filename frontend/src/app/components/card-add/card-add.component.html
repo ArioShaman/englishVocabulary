@@ -1,65 +1,78 @@
-<div class="title">Add word data</div>
+<div class="content-container" >
+  <div class="cards-body" [ngClass]="darkMode  ? 'dark-card':''">
+    <div class="cards">
+      <div class="title">Add word data</div>
+      <form (ngSubmit)="onSubmit()">
 
-<div class="container">
-   <form (ngSubmit)="onSubmit()">
-      <div class="groups">
-        <div class="names">
-          <div class="tit">Variables</div>
-          <div class="var">Word:</div>
-          <div class="var">Example sentence:</div>
-          <div class="var">Color:</div>
-        </div>
-        <div class="eng">
-            <div class="tit">English</div>
-
-              <input type="text" class="" required
-                    [(ngModel)]="card.eng" name="eng">
-
-              <input type="text" class="" required
-                    [(ngModel)]="card.engSentence" name="engSentence">  
-
-                
-              <div class="picker">
-                <div class="color-picker"
-                  (click)="changeState()"
-                  [style.background-color]="selectedColor"                  
-                >
-                </div>                  
-                <div class="colors-line"
-                  [@colorState]="colorState"
-                >
-                  <div *ngFor="let color of colors">
-                    <div class="color"
-                      (click)="selectColor(color)"
-                      [style.background-color]=color
-                    ></div>
-                  </div>
-                </div>
-              </div>
-
-            <div>
-        </div>
-        
-        </div>
-        
-        <div class="rus">
-          <div class="tit">Russian</div>
-
-
-          <input type="text" class="" required
-              [(ngModel)]="card.rus" name="rus">  
-          <input type="text" class="" required
-              [(ngModel)]="card.rusSentence" name="rusSentence">
-
-          <div class="selecter">
-            <div class="var">Kind:</div>
-            <app-selecter [filters]="filters"></app-selecter>
+        <div class="groups">
+          <div class="names">
+            <div class="tit">Variables</div>
+            <div class="var">Word:</div>
+            <div class="var">Example sentence:</div>
+            <div class="var">Color:</div>
           </div>
-        </div>                
-      </div>
-      <input class="submit" type="submit" value="Add card" />
-    </form>
+          <div class="eng">
+              <div class="tit">English</div>
 
+                <input type="text" class="" required
+                      [(ngModel)]="card.eng" name="eng">
+
+                <input type="text" class="" required
+                      [(ngModel)]="card.engSentence" name="engSentence">  
+
+                <div class="picker">
+                  <color-picker [childData]="card"></color-picker>
+                </div>
+<!--                 <div class="picker">
+                  <div class="color-picker"
+                    (click)="changeState()"
+                    [style.background-color]="selectedColor"                  
+                  >
+                  </div>                  
+                  <div class="colors-line"
+                    [@colorState]="colorState"
+                  >
+                    <div *ngFor="let color of colors">
+                      <div class="color"
+                        (click)="selectColor(color)"
+                        [style.background-color]=color
+                      ></div>
+                    </div>
+                  </div>
+                </div> -->
+
+              <div>
+          </div>
+          
+          </div>
+          
+          <div class="rus">
+            <div class="tit">Russian</div>
+
+
+            <input type="text" class="" required
+                [(ngModel)]="card.rus" name="rus">  
+            <input type="text" class="" required
+                [(ngModel)]="card.rusSentence" name="rusSentence">
+
+            <div class="selecter">
+              <div class="var">Kind:</div>
+              <app-selecter [filters]="filters"></app-selecter>
+            </div>
+          </div>                
+        </div>
+        <!-- <input class="submit" type="submit" value="Add card" /> -->
+        <grad-button gradClass="grad06" text="Add card" (click)="onSubmit()"></grad-button>
+      </form>
+
+
+    </div>
+    <div class="empty"></div>
+  </div>
+</div>
+
+
+<!--
     <div class="preview">
           <div class="clicked" [style.background-color]="card.colorHash || selectedColor" >
             <div class="content">
@@ -96,5 +109,4 @@
               </dir>
             </div>
           </div>      
-    </div>
-</div>
+</div>-->

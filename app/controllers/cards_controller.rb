@@ -20,7 +20,7 @@ class CardsController < ApplicationController
   # POST /cars
   def create
     @card = Card.new(card_params)
-
+    @card.voc_id = params[:voc_id]
     if @card.save
       render json: @card, status: :created, location: @card
     else
@@ -50,6 +50,6 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.require(:card).permit(:eng, :rus, :engSentence, :rusSentence, :colorHash, :kind_id)
+      params.require(:card).permit(:eng, :rus, :engSentence, :rusSentence, :colorHash, :kind_id, :voc_id)
     end
 end

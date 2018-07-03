@@ -4,6 +4,8 @@ import { Card } from '../../models/card';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 
+import { Angular2TokenService, AuthData, UserData } from "angular2-token";
+
 @Component({
   selector: 'color-picker',
   templateUrl: './color-picker.component.html',
@@ -32,7 +34,9 @@ export class ColorPickerComponent implements OnInit {
   public colorsState = 'inactive';
   public selectedColor = null;
 
-  constructor(public apiService: ApiService , public acRoute : ActivatedRoute)  { }
+  constructor(public apiService: ApiService, 
+    public acRoute : ActivatedRoute,
+    public authTokenService:Angular2TokenService)  { }
 
   ngOnInit() {
     this.selectedColor = this.childData.colorHash;
@@ -43,11 +47,15 @@ export class ColorPickerComponent implements OnInit {
 
     this.childData.colorHash = color;
     this.selectedColor = color;
-    this.acRoute.params.subscribe((data : any)=>{
-      this.apiService.update("vocs/"+data.id+"/cards/"+this.childData.id  ,this.childData).subscribe((r)=>{
-        this.selectedColor = color;
-      })    
-    });
+    console.log(this.childData.id);
+    if (this.childData.id){
+      this.acRoute.params.subscribe((data : any)=>{
+        this.authTokenService.put("vocs/"+data.id+"/cards/"+this.childData.id  ,this.childData).subscribe((r)=>{
+          this.selectedColor = color;
+        })    
+      });
+      
+    }
   }
 
   public changeState(): void{
