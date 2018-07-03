@@ -1,0 +1,75 @@
+$grey: #F3F3F3
+$gray: #707070
+$darkred:  #973130
+
+$voc-body: #F3F3F3
+
+//DarkModeVars
+$darkGrey: #111111
+
+.button
+  height: 35px
+  width: 150px
+  // background-color: $darkred
+  // margin-top: 40px
+  border-radius: 5px
+  cursor: pointer
+  &:hover
+    .body
+      clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  .text
+    position: absolute
+    font-size: 18px
+    font-family: 'proxima-reg'
+    text-align: center
+    color: white
+    padding-top: 7px
+    width: 150px
+  .body
+    transition: 0.5s
+    position: relative
+    border-radius: 4px
+    float: right
+    margin-right: 3px
+    height: 31px
+    width: 144px
+    background-color: $grey
+    margin-top: 2px
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    .body-text
+      position: fixed
+      width: 144px
+      // color: #B436E0
+      text-align: center
+      font-size: 18px
+      font-family: 'proxima-reg'
+      padding-top: 5px
+
+.grad01
+  background: linear-gradient(to top right, #EF3131, #4E36E0)     
+  .body-text
+    color: #EF3131 !important    
+.grad02
+  background: linear-gradient(to top right, #39E036, #EFD031)
+  .body-text
+    color: #39E036 !important
+.grad03
+  background: linear-gradient(to top right, #31E3EF, #B436E0)
+  .body-text
+    color: #B436E0 !important  
+.grad04
+  background: linear-gradient(to top right, #EFE731, #E03636)
+  .body-text
+    color: #E03636 !important  
+.grad05
+  background: linear-gradient(to top right, #EF8C31, #36E047)
+  .body-text
+    color: #EF8C31 !important  
+.grad06
+  background: linear-gradient(to top right, #36ADE0, #31EF9F)
+  .body-text
+    color: #36ADE0 !important  
+.grad07
+  background: linear-gradient(to top right, #EF8C31, #E92B7B)
+  .body-text
+    color: #E92B7B !important  

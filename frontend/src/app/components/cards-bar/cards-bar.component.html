@@ -1,16 +1,21 @@
 <div class="buttons" [ngClass]="darkMode  ? 'dark-bar':''">
   <div class="button">
-    <div class="icon" (click)="shuffle()"></div>
+    <div class="icon shuffle" (click)="shuffle()"></div>
     <div class="length" (click)="shuffle()">Shuffle cards</div>
   </div>
 
   <div class="button">
-    <div class="icon" (click)="reorder()"></div>
+    <div class="icon reorder" (click)="reorder()"></div>
     <div class="length" (click)="reorder()">Reorder</div>
   </div>
 
   <div class="button">
-    <div class="icon" (click)="resetFilter()"></div>
+    <div class="icon reser" (click)="resetFilter()"></div>
     <div class="length" (click)="resetFilter()">Reset filter</div>
   </div>  
+
+  <div class="button" *ngIf="selectedCards.length > 0">
+    <div class="icon reser" (click)="destroyCards()"></div>
+    <div class="length" (click)="destroyCards()">Destroy cards</div>
+  </div>    
 </div>

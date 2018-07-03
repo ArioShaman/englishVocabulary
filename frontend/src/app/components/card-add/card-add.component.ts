@@ -5,6 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
 import { HelperService } from '../../services/helper.service';
 
+
+import {  AuthService } from "../../services/auth.service";
+import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
+
 @Component({
   selector: 'app-card-add',
   templateUrl: './card-add.component.html',
@@ -46,6 +50,7 @@ export class CardAddComponent implements OnInit {
 
   constructor(public apiService: ApiService ,
     public acRoute : ActivatedRoute,
+    public authTokenService:Angular2TokenService,
     public _: HelperService) { }
 
   ngOnInit() {

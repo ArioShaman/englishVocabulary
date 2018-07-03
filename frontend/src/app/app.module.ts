@@ -34,6 +34,7 @@ import { DarkModeService } from "./services/dark-mode.service";
 
 import { Ng2CacheModule } from 'ng2-cache';
 import { VocAddComponent } from './components/voc-add/voc-add.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { VocAddComponent } from './components/voc-add/voc-add.component';
     VocsBarComponent,
     UpperSideBarComponent,
     VocAddComponent,
+    ButtonComponent,
     // ModalDirective,
   ],
   imports: [

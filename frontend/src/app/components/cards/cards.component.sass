@@ -6,16 +6,17 @@ $card-body: #F3F3F3
 
 $darkGrey: #111111
 .dark-card
-  .cards
-    background-color: $darkGrey !important
-  .card-body
+  .cards, .check-body, .card-body, .card-content-block
     background-color: $darkGrey !important
   .name, .counts, .title 
     color: white !important
   .sentence
     color: $grey !important
+  .newcard
+    background-color: white !important    
 
 modal
+  z-index: 2000 !important
   .modal-open
     display: block !important
   .modal-body
@@ -32,8 +33,9 @@ modal
       width: 100%    
     .modal
       box-shadow: 0px 0px 15px 0px grey
-      position: relative
-      min-height: 150px
+      position: fixed
+      min-height: 160px
+      left: calc((100% - 400px)/2)
       width: 400px
       margin: 0px auto
       margin-top: 100px
@@ -208,7 +210,18 @@ modal
     display: flex
     flex-direction: row
     flex-wrap: wrap  
-    position: relative    
+    position: relative  
+  .newcard
+    background-color: grey
+    margin-top: 20px
+    margin-left: 30px
+    .new-icon
+      height: 50px
+      width: 50px
+      margin: 0px auto
+      margin-top: 33px
+      background-image: url('/assets/images/add-white.svg')
+      background-size: cover        
   .card
     cursor: pointer
     border-radius: 15px
@@ -227,15 +240,43 @@ modal
       position: absolute
       z-index: 999
 
+    .check-mark
+      height: 19px
+      width: 19px
+      border-radius: 50%
+      .check-body
+        // position: absolute
+        border-radius: 50%
+        height: 15px 
+        width: 15px
+        transform: translateY(2px)
+        margin-left: 2px
+        background-color: $card-body
+        .selected
+          height: 100%
+          width: 100%
+          border-radius: 100%
+          .icon
+            height: 100%
+            width: 100%            
+            background-image: url('/assets/images/check-mark.svg')
+            background-size: 11px
+            background-repeat: no-repeat
+            background-position: center
+    .color-picker
+      z-index: 1999
     .filter
       font-size: 16px
       color: white
       font-family: 'proxima-light'
       transition: 0.5s
+      z-index: 10
       &:hover
         transform: scale(1.05, 1.05)
     .bottom
       margin-top: 95px
+    .top
+      margin-top: 9px
     .left
       left: 9px
     .right
@@ -349,28 +390,28 @@ modal
 
 .grad01
   background: linear-gradient(to top right, #EF3131, #4E36E0)
-  &:hover
+  &:hover.grad
    background: linear-gradient(to bottom left, #EF3131, #4E36E0 )          
 .grad02
   background: linear-gradient(to top right, #39E036, #EFD031)
-  &:hover
+  &:hover.grad
 .grad03
   background: linear-gradient(to top right, #31E3EF, #B436E0)
-  &:hover
+  &:hover.grad
     background: linear-gradient(to bottom left, #31E3EF, #B436E0)
 .grad04
   background: linear-gradient(to top right, #EFE731, #E03636)
-  &:hover
+  &:hover.grad
     background: linear-gradient(to bottom left, #EFE731, #E03636)
 .grad05
   background: linear-gradient(to top right, #EF8C31, #36E047)
-  &:hover
+  &:hover.grad
     background: linear-gradient(to bottom left, #EF8C31, #36E047)
 .grad06
   background: linear-gradient(to top right, #36ADE0, #31EF9F)
-  &:hover
+  &:hover.grad
     background: linear-gradient(to bottom left, #36ADE0, #31EF9F)
 .grad07
   background: linear-gradient(to top right, #EF8C31, #E92B7B)
-  &:hover
+  &:hover.grad
     background: linear-gradient(to bottom left, #EF8C31, #E92B7B)        

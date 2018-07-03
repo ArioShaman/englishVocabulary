@@ -2,7 +2,7 @@
   <div class="buttons">
     
     <div *ngIf="tokenAuthSerivce.currentUserData" class="button">
-      <div class="icon"></div>
+      <div class="icon profile"></div>
       <div class="length" (click)="profile()">Profile</div>
     </div>
 
@@ -10,6 +10,11 @@
       <div class="icon"></div>
       <div class="length" (click)="changeMode()">Night Mode</div>
     </div> 
+
+    <div class="button">
+      <div class="icon statistic"></div>
+      <div class="length">Statistic</div>
+    </div>     
 
     <div *ngIf="tokenAuthSerivce.currentUserData" class="button">
       <div class="icon"></div>

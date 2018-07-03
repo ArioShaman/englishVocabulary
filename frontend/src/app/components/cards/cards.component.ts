@@ -1,18 +1,20 @@
 import { ContentChild, ViewChild, Component, OnInit , Input, Inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../api.service';
 import { Card } from '../../models/card';
 import { trigger, state, style, animate, transition, query, animateChild, keyframes} from '@angular/animations';
-import { HelperService } from '../../services/helper.service';
 import { ModalComponent } from '../modal/modal.component';
+import {Observable} from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
+
+//Services
+import { HelperService } from '../../services/helper.service';
 import {  AuthService } from "../../services/auth.service";
 import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
-import {Observable} from 'rxjs/Observable';
 import {  SharedService } from "../../services/shared.service";
-import { CardsService } from "../../services/cards.service";
-import { ActivatedRoute } from '@angular/router';
 import { DarkModeService } from "../../services/dark-mode.service";
-
+import { CardsService } from "../../services/cards.service";
+import { CardDestroyService } from "../../services/card-destroy.service";
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-cards',
@@ -45,7 +47,16 @@ import { DarkModeService } from "../../services/dark-mode.service";
       transition('* => void', [
         animate(200, style({width: '0px'}))
       ])      
-    ]),   
+    ]), 
+    trigger('selectState', [
+      state('active', style({
+        'display': 'block'
+      })),
+      state('inactive', style({
+        'display': 'none'
+      })),
+      ]
+     ),  
   ]  
 })
 
@@ -54,12 +65,15 @@ export class CardsComponent implements OnInit {
   public cards : Array<Card>; 
   public kinds : Array<any>;
   public selectedCard: Card;
+  public selectedCards: Array<Card> = [];
   public darkMode:boolean;
   public filters = {kind: ''};
   public opened:boolean = false;
   public deleteId:number;
   public state = 'cards';
   public currentUser:any;
+  public cardIndex: any;
+  public vocId:number;
 
 
   constructor(public apiService: ApiService,
@@ -71,43 +85,41 @@ export class CardsComponent implements OnInit {
     public shared:SharedService,
     public cardsService:CardsService,
     public acRoute : ActivatedRoute,
-    public darkModeService:DarkModeService
+    public darkModeService:DarkModeService,
+    public cardDestroyService:CardDestroyService
     ) {
         this.darkModeService.darkModeChange.subscribe((value) => { 
           this.darkMode = value; 
         });   
         this.cardsService.cardChange.subscribe((value) => {
           this.cards = value;
-        });          
-        // this.authTokenService.init();            
+        });   
+        this.cardDestroyService.openChange.subscribe((value) => {
+          this.opened = value;
+        }); 
+        this.cardDestroyService.selectChange.subscribe((value) => {
+          this.selectedCards = value;
+        });                   
   }
 
   
   ngOnInit() {
     this.darkMode = this.darkModeService.get();
+    this.cardDestroyService.clean();
     this.acRoute.params.subscribe((data : any)=>{
-      if(data && data.id){
-        // this.apiService.get("vocs/"+data.id+"/cards")
-        // .subscribe((data : Card[])=>{
-        //   for(let obj of data){
-        //     obj["state"] = 'inactive';
-        //   }
-        //   this.cards = data;
-        //   // console.log(this.cards);
-        //   this.cardsService.insertData(this.cards);
-        //   this.shared.set(this.state);
-        //   // this.cardsService.getCards();
-        // });   
+      if(data && data.id){ 
+        this.vocId = data.id;
+        console.log(this.vocId);
         this.authTokenService.get("vocs/"+data.id+"/cards").map(res => res.json()).subscribe(
             res =>{
               for(let obj of res){
                 obj["state"] = 'inactive';
+                obj["selected"] = 'inactive';
               }
               this.cards = res;
               // console.log(this.cards);
               this.cardsService.insertData(this.cards);
-              this.shared.set(this.state);
-              // this.cardsService.getCards();   
+              this.shared.set(this.state);   
             },
             error => {
                this.router.navigate(['/auth'])
@@ -129,43 +141,36 @@ export class CardsComponent implements OnInit {
   // }
 
   public open(){
-    this.opened = true;
+    this.cardDestroyService.open();
   }
 
   public close(){
-    this.opened = false;
+    this.cardDestroyService.close();
   }
 
   public onFilter(kind:string){
-    // this.filters.kind = kind;
     this.cardsService.setFilter(kind);
   }
 
-  // public resetFilter():void{
-  //   // console.log(this.authTokenService.currentUserData[);
-  //   this.filters.kind = ''; 
-  // }
 
-  public destroy(id:number){
-    var path = 'cards/' + id;
-    this.apiService.delete(path).subscribe((r)=>{
-
-      this.cards = this.cards.filter((p,i)=>{
-          if(Number(id) === p.id ) 
-          {
-          return false;
-          }
-          return true;
-      },this.cards)
-    });    
+  public destroy(){
+    this.acRoute.params.subscribe((data : any)=>{
+      this.selectedCards.forEach(card =>{
+        var path = "vocs/"+data.id+"/cards/" + card.id;
+        card.selected = 'inactive';
+        this.authTokenService.delete(path).subscribe(
+          res =>{
+            this.cards.splice(this.cards.indexOf(card), 1);
+            console.log(res);
+          },
+          error=>{
+            console.log(error);
+          });
+      });
+      
+    });
+    this.selectedCards.splice(0, this.selectedCards.length)
     this.close();
-  }
-  public delete(id:number){
-    this.open();
-    this.deleteId = id;
-    // console.log("delete : " + id);
-
-
   }
   public disactive(actCard):void{
     var arr = this._.map(this.cards, function(card){
@@ -188,4 +193,12 @@ export class CardsComponent implements OnInit {
     this.disactive(card);
     card.state = card.state === 'active' ? 'inactive' : 'active';
   } 
+  public changeSelect(card: Card):void{
+    card.selected = card.selected === 'active' ? 'inactive' : 'active'; 
+    if(card.selected == 'active'){
+      this.cardDestroyService.insertCard(card);
+    }else{
+      this.cardDestroyService.destroyCard(card);
+    }
+  }
 }

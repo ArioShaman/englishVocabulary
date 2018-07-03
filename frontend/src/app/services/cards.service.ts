@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card';
-import { ApiService } from '../api.service';
 import { HelperService } from '../services/helper.service';
 import { Subject } from "rxjs/Subject";
 
@@ -26,11 +25,11 @@ export class CardsService {
 
   setFilter(kind){
     this.filters.kind = kind;
-    console.log(this.filters);
+    // console.log(this.filters);
   }
 
   resetFilter(){
-    console.log(this.filters);
+    // console.log(this.filters);
     this.filters.kind = '';
   }
 }

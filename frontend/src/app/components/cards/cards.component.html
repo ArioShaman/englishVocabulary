@@ -7,7 +7,7 @@
         <div class="close" (click)="close()"></div>
         <h3>Are you realy do you want to delete card ?</h3>
         <div class="buttons">
-          <div class="mod-butt green" (click)="destroy(deleteId)">Yes</div>
+          <div class="mod-butt green" (click)="destroy()">Yes</div>
           <div class="mod-butt" (click)="close()">No</div>
         </div>
       </div>
@@ -20,8 +20,18 @@
       <div class="title">You can choose word</div>
   
       <div class="cards-flex">
+
+        <div class="card newcard">
+          <a [routerLink]="['/vocs/'+vocId+'/cards/add']" >
+            <div class="card-content-block">
+              <div class="new-icon"></div>
+            </div>
+          </a>
+        </div>
+
+
         <div *ngFor="let card of cards | myFilter:filters">
-          <div class="card"
+          <div class="card grad"
             [ngClass]="[
               card.colorHash == 'grad01' ? 'grad01':'',
               card.colorHash == 'grad02' ? 'grad02':'',
@@ -34,7 +44,7 @@
             >
             <div class="card-body"></div>
 
-            <div class="angle-bar bottom left">
+            <div class="angle-bar color-picker bottom left">
               <color-picker [childData]="card" ></color-picker>              
             </div>
             
@@ -43,6 +53,37 @@
                 (click)="onFilter(card.kind)"
               >{{card.kind}}</div>
             </div>
+
+            <div class="angle-bar top right">
+              <div class="check-mark"
+                [ngClass]="[
+                  card.colorHash == 'grad01' ? 'grad01':'',
+                  card.colorHash == 'grad02' ? 'grad02':'',
+                  card.colorHash == 'grad03' ? 'grad03':'',
+                  card.colorHash == 'grad04' ? 'grad04':'',
+                  card.colorHash == 'grad05' ? 'grad05':'',
+                  card.colorHash == 'grad06' ? 'grad06':'',
+                  card.colorHash == 'grad07' ? 'grad07':''
+                ]"
+              >
+                <div class="check-body" (click)="changeSelect(card)">
+                  <div class="selected"
+                    [@selectState]="card.selected"
+                    [ngClass]="[
+                      card.colorHash == 'grad01' ? 'grad01':'',
+                      card.colorHash == 'grad02' ? 'grad02':'',
+                      card.colorHash == 'grad03' ? 'grad03':'',
+                      card.colorHash == 'grad04' ? 'grad04':'',
+                      card.colorHash == 'grad05' ? 'grad05':'',
+                      card.colorHash == 'grad06' ? 'grad06':'',
+                      card.colorHash == 'grad07' ? 'grad07':''
+                    ]"
+                  >
+                    <div class="icon"></div>
+                  </div>
+                </div>
+              </div>
+            </div>            
 
             <a [routerLink]="" >
               <div class="card-content-block"
@@ -83,30 +124,7 @@
         <div class="plus"></div>
       </a> -->
 
-<!--  <div class="clicked">
-            <div class="content">
-              <div class="angle-bar top left">
-
-                <a [routerLink]="['/cards/add', card['id']]" class="update">
-                </a>     
-              </div>
-              <div class="angle-bar top right">
-                <div class="delete"
-                  (click)="delete(card['id'])"
-                ></div> 
-              </div>
-              <div class="angle-bar bottom right">
-                <div class="kind" (click)="onFilter(card['kind'])">
-                  {{card['kind']}}
-                </div> 
-              </div>
-              <div class="angle-bar bottom left">
-                <div *ngIf='card'>
-                  <app-color-picker [childData]="card" ></app-color-picker>
-                </div>    
-              </div>          
-            </div>
-      </div> -->
+<!--<a [routerLink]="['/cards/add', card['id']]" class="update"></a>-->
     </div>
 
     <div class="empty"></div>

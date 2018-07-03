@@ -6,5 +6,6 @@ export class Card{
   public engSentence:string;
   public colorHash:string;
   public state = 'inactive';
+  public selected = 'inactive';
   public kind_id:number;
 }
