@@ -1,0 +1,68 @@
+$grey: #DFDEDD
+$gray: #707070
+$darkred:  #973130
+
+$card-body: #F3F3F3
+
+$darkGrey: #111111
+
+modal
+  z-index: 2000 !important
+  .modal-open
+    display: block !important
+  .modal-body
+    z-index: 900
+    height: 100%
+    width: 100%
+    position: absolute 
+    margin: 0px auto
+    display: none
+    .space
+      position: absolute
+      // background-color: white
+      height: 100%
+      width: 100%    
+    .modal
+      box-shadow: 0px 0px 15px 0px grey
+      position: fixed
+      min-height: 160px
+      left: calc((100% - 400px)/2)
+      width: 400px
+      margin: 0px auto
+      margin-top: 100px
+      background-color: white
+      h3
+        padding-top: 45px
+        font-size: 15px
+        font-family: 'stolzl-reg'
+        padding-left: 25px
+        color: $gray
+      .buttons
+        height: 25px
+        width: 250px
+        margin: 0px auto
+        display: flex
+        justify-content: space-between
+        margin-top: 35px
+        .green
+          background-color: #AAFF8F !important
+        .mod-butt
+          cursor: pointer
+          // padding-top: 5px
+          width: 30%
+          transition: 0.5s
+          &:hover
+            transform: translateY(-5px)
+      .close
+        cursor: pointer
+        color: black
+        position: absolute
+        height: 20px
+        width: 20px
+        background-size: cover
+        right: 10px
+        top: 10px
+        transition: 0.5s
+        background-image: url('/assets/images/close-black.svg')  
+        &:hover
+          transform: scale(1.1,1.1)

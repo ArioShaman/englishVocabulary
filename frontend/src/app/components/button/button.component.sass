@@ -7,38 +7,45 @@ $voc-body: #F3F3F3
 //DarkModeVars
 $darkGrey: #111111
 
+*
+  box-sizing: border-box
 .button
+  position: absolute
   height: 35px
-  width: 150px
-  // background-color: $darkred
-  // margin-top: 40px
+  width: auto
   border-radius: 5px
   cursor: pointer
   &:hover
     .body
       clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
   .text
-    position: absolute
+    position: relative
     font-size: 18px
     font-family: 'proxima-reg'
     text-align: center
     color: white
     padding-top: 7px
-    width: 150px
+    // width: 150px
+    width: auto
+    padding-left: 25px
+    padding-right: 25px
   .body
+    top: 0px
     transition: 0.5s
     position: relative
+    position: absolute
+    background-color: $grey
     border-radius: 4px
     float: right
     margin-right: 3px
     height: 31px
-    width: 144px
-    background-color: $grey
+    margin-left: 2px
+    width: calc(100% - 4px)
     margin-top: 2px
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     .body-text
-      position: fixed
-      width: 144px
+      position: absolute
+      width: 100%
       // color: #B436E0
       text-align: center
       font-size: 18px

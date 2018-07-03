@@ -42,6 +42,10 @@ export class CardsBarComponent implements OnInit {
     this.cardsService.resetFilter();
   }
 
+  public resetSelect(){
+    this.cardDestroyService.resetSelect();    
+  }
+
   public reorder():void{
     this.cards.reverse();
   }

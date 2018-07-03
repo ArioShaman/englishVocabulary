@@ -19,7 +19,7 @@ import { ApiService } from '../../api.service';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.sass'],
+  styleUrls: ['./cards.component.sass', '../../../assets/styles/modal.sass'],
   animations: [
     trigger('cardState', [
       state('inactive', style({
@@ -135,10 +135,6 @@ export class CardsComponent implements OnInit {
   sayhello(){
     console.log('hello!!');
   }
-
-  // public logOut(){
-  //   this.authService.logOutUser().subscribe(() => this.router.navigate(['/auth']));
-  // }
 
   public open(){
     this.cardDestroyService.open();

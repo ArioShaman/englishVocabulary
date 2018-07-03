@@ -31,6 +31,13 @@ export class CardDestroyService {
   getSelected(){
     return this.selectedCards;
   }
+  resetSelect(){
+    this.selectedCards.forEach(card =>{
+      card.selected = 'inactive';
+    });
+    this.selectedCards = [];
+    this.selectChange.next(this.selectedCards);    
+  }
   open(){
     this.opened = true;
     this.openChange.next(this.opened);

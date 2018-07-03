@@ -7,8 +7,14 @@
         <div class="close" (click)="close()"></div>
         <h3>Are you realy do you want to delete card ?</h3>
         <div class="buttons">
-          <div class="mod-butt green" (click)="destroy()">Yes</div>
-          <div class="mod-butt" (click)="close()">No</div>
+
+          <div class="mod-butt">
+            <grad-button gradClass="grad02" text="Yes" (click)="destoy()"></grad-button>
+          </div>
+          <div class="mod-butt">
+            <grad-button gradClass="grad04" text="No" (click)="close()"></grad-button>
+          </div>
+
         </div>
       </div>
     </div>  

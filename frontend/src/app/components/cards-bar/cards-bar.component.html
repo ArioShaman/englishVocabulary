@@ -17,5 +17,10 @@
   <div class="button" *ngIf="selectedCards.length > 0">
     <div class="icon reser" (click)="destroyCards()"></div>
     <div class="length" (click)="destroyCards()">Destroy cards</div>
-  </div>    
+  </div>
+
+  <div class="button" *ngIf="selectedCards.length > 0">
+    <div class="icon reser" (click)="resetSelect()"></div>
+    <div class="length" (click)="resetSelect()">Reset select</div>
+  </div>      
 </div>
