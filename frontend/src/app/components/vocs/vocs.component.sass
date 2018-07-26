@@ -17,6 +17,7 @@ $darkGrey: #111111
     background-color: $darkGrey !important
   .name, .counts
     color: white !important
+
 .vocs-body
   left: 0px
   // position: absolute
@@ -102,24 +103,59 @@ $darkGrey: #111111
         // clip-path: polygon( 0% 0%, 0% 100%, 100% 100%, 100% 0%)
         &:hover
           transform: scale(1.1, 1.1) 
- 
+        .background
+          box-sizing: border-box
+          position: absolute
+          height: calc(124px - 8px)
+          width: calc(220px - 8px)
+          // background-color: rgba(0, 0, 0, 0.5)
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 0.14));
+          z-index: 110
+          border-radius: 11px
+        .angle-bar
+          position: absolute  
+          z-index: 999    
+        .bottom
+          margin-top: 90px
+        .top
+          margin-top: 9px
+        .left
+          margin-left: 9px
+        .right
+          right: 9px
+        .caller
+          height: 15px
+          width: 15px
+          border-radius: 50%
+          border: 2px solid white
+          transition: 0.5s
+          &:hover
+            transform: translateY(-5px)            
         .voc-content-block
+          box-sizing: border-box
           z-index: 100
           position: absolute
           margin: 4px
           height: calc(124px - 8px)
           background-color: $voc-body
+          background-size: cover
+          background-position: center
+          // background-image: url('http://localhost:3000/uploads/image/image/1/cov-05.png');
           width: calc(220px - 8px)
           border-radius: 12px
           .name
+            position: relative
+            z-index: 120
             padding-top: 32px
             font-family: 'proxima-light'
             font-size: 32px
-            color: black
+            color: white
             text-align: center
           .counts
+            position: relative
+            z-index: 120
             font-family: 'proxima-light'
-            font-size: 8px
-            color: black
+            font-size: 10px
+            color: white
             text-align: center
             line-height: 8px

@@ -3,6 +3,7 @@ import {  SharedService } from "../../services/shared.service";
 import { DarkModeService } from "../../services/dark-mode.service";
 import { ApiService } from '../../api.service';
 import {  AuthService } from "../../services/auth.service";
+import { DialogService } from "../../services/dialog.service";
 import {  Angular2TokenService, AuthData, UserData } from "angular2-token";
 import {Router} from "@angular/router";
 
@@ -16,21 +17,28 @@ export class VocsComponent implements OnInit {
   public darkMode:boolean;
   public currentUser:any;
   public vocs:Array<any>;
+  public apiBase:string = 'http://localhost:3000';
+
   constructor(public apiService: ApiService,
               public shared:SharedService,
               public darkModeService:DarkModeService,
               // public authService:AuthService,
               public authTokenService:Angular2TokenService,
-              private router:Router                  
+              private router:Router,
+              public dialog: DialogService                
     ){
         this.darkModeService.darkModeChange.subscribe((value) => { 
           this.darkMode = value; 
         });   
+        this.dialog.dialogStateChange.subscribe((value) => { 
+          this.dialogState = value; 
+        });         
     }
 
   ngOnInit() {
     this.darkMode = this.darkModeService.get();
     this.shared.set(this.state);   
+    this.dialogState = this.dialog.get();
     this.currentUser = this.authTokenService.currentUserData;
 
     this.authTokenService.get('vocs.json').map(res => res.json()).subscribe(
@@ -50,4 +58,7 @@ export class VocsComponent implements OnInit {
     
   }
 
+  public selectCover(id):void{
+    this.dialog.open(id);
+  }
 }

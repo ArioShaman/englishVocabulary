@@ -94,10 +94,13 @@ $darkGrey: #111111
 
 
 #content
+  position: relative
   width: 100%
   transition: width 0.5s
 .dark-body
   background-color: black !important
+  .inside
+    background-color: white !important
 .body
   z-index: 0
   position: absolute
@@ -124,10 +127,11 @@ $darkGrey: #111111
   .content
     background-color: $darkGrey !important
 .sidebar
-  // z-index: 999 !important
+  z-index: 9999 !important
   transition: linear 0.5s
   height: 100%
   .content
+    background-color: white
     transition: linear 0.5s
     height: 100%
     width: 250px

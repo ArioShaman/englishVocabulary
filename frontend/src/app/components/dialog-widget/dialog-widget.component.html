@@ -1,0 +1,17 @@
+<div class="dialog-body" [ngClass]="[dialogState == 'open'? 'dialog-open':'']">
+    <div class="dialog-widget">
+      <div class="inside">
+        <div class="close" (click)="close()"></div>
+        <div class="list-place">
+
+          <div class="images">
+            <div *ngFor="let image of images" >
+              <div class="image">
+              </div>
+            </div>                    
+          </div>
+
+        </div>
+      </div>
+    </div>   
+</div>  

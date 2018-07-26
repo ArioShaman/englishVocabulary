@@ -1,0 +1,70 @@
+.dialog-open
+  display: block !important
+$grey: #DFDEDD
+$gray: #707070
+$darkred:  #973130
+
+$card-body: #F3F3F3
+
+$darkGrey: #111111
+
+.dialog-body
+  display: none
+  position: fixed
+  z-index: 1990 !important
+  height: 100%
+  width: 100%
+  top: 0px
+  .dialog-widget
+    background: linear-gradient(to top right, #EF3131, #4E36E0)
+    transition: 0.3s
+    position: relative
+    height: 400px
+    width: 500px
+    // background-color: grey
+    top: 75px
+    margin-left: calc((100% - 500px)/2)
+  .inside
+    position: absolute
+    width: 496px
+    height: 396px
+    background-color: #f3f3f3
+    margin-left: 2px
+    margin-top: 2px
+    .close
+      cursor: pointer
+      position: absolute
+      top: 10px
+      right: 10px
+      height: 25px
+      width: 25px
+      background-color: grey
+    .list-place
+      position: relative
+      height: 300px
+      overflow-y: scroll 
+      overflow-x: hidden
+      width: calc(100% - 10px)
+      margin-top: 50px
+      &::-webkit-scrollbar
+        width: 9px
+        margin-left: -5px
+        border-radius: 10px
+        background-color: $grey      
+      &::-webkit-scrollbar-thumb
+        background-color: $gray
+        border-radius: 10px
+      .images
+        margin: 0px auto
+        height: auto
+        width: 435px
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap        
+        // background-color: red
+        .image
+          margin-top: 5px
+          height: 85px
+          width: 140px
+          background-color: grey
+          margin-left: 5px

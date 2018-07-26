@@ -1,4 +1,4 @@
-<div class="vocs-body" [ngClass]="darkMode  ? 'dark-voc':''">
+<div class="vocs-body" [ngClass]="darkMode  ? 'dark-voc':''"> 
   <div class="vocs">
     <div class="title">All vocs</div>
 
@@ -13,7 +13,22 @@
       </div>
 
       <div *ngFor="let voc of vocs">
-        <div class="voc"
+        <div class="voc">
+          <div class="angle-bar left bottom" (click)="selectCover(voc.id)">
+            <div class="caller"></div>
+          </div>        
+          
+          <a [routerLink]="['/vocs/'+voc.id+'/cards']" >
+            <div  [ngStyle]="{'background-image': 'url('+ apiBase + voc.image.url +')'}" class="voc-content-block">
+              <div class="background">
+              </div>
+
+              <div class="name">{{voc.name}}</div>
+              <div class="counts">{{voc.cards_count}} words</div>
+            </div>
+          </a>          
+        </div>
+<!--         <div class="voc"
           [ngClass]="[
             voc.color == 'grad01' ? 'grad01':'',
             voc.color == 'grad02' ? 'grad02':'',
@@ -31,7 +46,7 @@
             </div>
           </a>
 
-        </div>
+        </div> -->
 
       </div>
 

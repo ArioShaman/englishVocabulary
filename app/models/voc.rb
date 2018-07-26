@@ -3,4 +3,6 @@ class Voc < ApplicationRecord
 
   has_many :uservocs
   has_many :users, through: :uservocs, foreign_key: true
+
+  belongs_to :image
 end

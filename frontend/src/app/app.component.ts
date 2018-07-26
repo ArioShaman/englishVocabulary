@@ -59,6 +59,6 @@ export class AppComponent {
     console.log(this.cache.get('navState'));
   }
   public Settings():void{
-    this.settings = this.settings === 'active' ? 'inactive' : 'active';;
+    this.settings = this.settings === 'active' ? 'inactive' : 'active';
   }
 }
