@@ -1,4 +1,6 @@
-<div class="dialog-body" [ngClass]="[dialogState == 'open'? 'dialog-open':'']">
+<div class="dialog-body" 
+  [ngClass]="[dialogState == 'open'? 'dialog-open':'', darkMode  ? 'dark-dialog':'']"
+>
     <div class="dialog-widget">
       <div class="inside">
         <div class="close" (click)="close()"></div>
@@ -6,11 +8,22 @@
 
           <div class="images">
             <div *ngFor="let image of images" >
-              <div class="image">
+              <div class="image" 
+                [ngStyle]="{'background-image': 'url('+ apiBase + image.image +')'}"
+                (click)="activate(image)"                  
+              >
+                <div class="angle-bar top left selecter"
+                [ngClass]="[image.selected == 'active' ? 'active':'']"  
+                >
+                </div>
               </div>
             </div>                    
           </div>
 
+        </div>
+
+        <div class="butt">
+          <grad-button gradClass="grad01" text="Accept" (click)="accept()"></grad-button>
         </div>
       </div>
     </div>   

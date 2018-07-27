@@ -18,6 +18,7 @@ export class VocsComponent implements OnInit {
   public currentUser:any;
   public vocs:Array<any>;
   public apiBase:string = 'http://localhost:3000';
+  public dialogState;
 
   constructor(public apiService: ApiService,
               public shared:SharedService,
